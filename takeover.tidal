@@ -1,0 +1,234 @@
+-- hello everyone
+
+cps (120/60)
+
+d1 $ slow 24 $ striate 4 $ sound "[beach [beach*32 beach*16] [beach*8 ~]/2 [~ beach*8]/2]"
+  |+| cut "0"
+  |+| gain "0.8"
+  |+| speed (density 4 "[1 1.25 1.5 0.5 1.75 1.25 1.00 0.75]*1")
+  |+| cutoff (slow 64 ((/2) <$> sine1))
+  |+| resonance (slow 64 ((/2) <$> sine1))
+  |+| pan (density 2 sine1)
+
+d1 silence
+
+
+
+d2 silence
+
+-- some swing
+d2 $ stack [
+  sound "bd:2 ~",
+  every 4 (density 2) $ sound (samples "east*4" (run 24))
+--  slow 4 $ sound "[~ hc ~ hc]*2" |+| gain "0.23",
+--  slow 8 $ sound "8HT*2" |+| speed (slow 16 "1.1 1.2 1.3 1.2"),
+  ,sound "~ 8CP/2"
+]
+ |+| cut "0"
+ |+| gain "1"
+ |+| resonance (slow 64 ((/2) <$> sine1)) 
+ |+| cutoff (slow 128 ((/2) <$> sine1))
+
+
+d2 silence
+
+
+-- ranas
+d1 $ $ stack [
+  slow 4 $ striate 8 $ sound "organ2 ~ ~ [organ2*4 ~]" |+| speed (density 2 "1 0.5")
+ -- jux (iter 4) $ slow 4 $ striate 8 $ sound "jam" |+| gain "1" |+| speed "0.5",
+ -- slow 4 $ chop 128 $ sound "jam:3/2" |+| cut "1" |+| gain "1" |+| speed "1",
+ -- slow 4 $ striate 4 $ sound "hammer" |+| gain "1",
+--  slow 4 $ every 4 (slow 2) $ striate 128 $ sound "303 ~ ~ 303:2 ~ ~ ~ 303:2"
+--  slow 32 $ striate 128 $ sound "[303*64 ~ ~ ~]"
+  ]
+  |+| cut "0"
+  |+| resonance (slow 64 ((/2) <$> sine1)) 
+  |+| cutoff (slow 128 ((/2) <$> sine1))
+  |+| pan (density 2 sine1)
+
+d1 silence
+
+hush
+
+-- cantantes
+d1 $ slow 32 $ jux (rev) $ chop 128 $ sound "pebbles*32 pebbles 8HT 8LT"
+  |+| pan (density 8 sine1)
+  |+| gain (slow 4 sine1)
+
+d1 silence
+
+d2 $ slow 32 $ striate 128 $ jux (0.25 <~) $ sound "pebbles*4"
+  |+| resonance "0.6"
+  |+| cutoff "0.01"
+  |+| gain "0.82"
+
+d1 $ stack [
+  sound "sub",
+  sound "8BD:2(3,8)"
+  ]
+
+d3 $ silence
+
+d3 $ slow 32 $ every 4 (density 4) $ sound (samples "lighter*32" (run 32))
+  |+| pan (density 8 sine1)
+  |+| resonance (slow 32 sine1)
+  |+| cutoff (slow 32 sine1)
+  |+| gain "0.75"
+  |+| delay "0.8"
+  |+| delayfeedback "1"
+  |+| delaytime "4"
+
+d3 silence
+
+d5 silence
+
+hush
+
+-- star sitar
+d5 $ slow 8
+   $ striate 8
+   $ every 4 (rev)
+   $ sound "sitar:2 [sitar:3*2] [sitar:2 sitar:1]*4 sitar*4"
+  |+| cut "1"
+  |+| gain "0.8"
+  |+| speed "1"
+
+d1 $ slow 2 $ stack [
+  sound "8BD*4",
+  sound "cp*2"
+--  every 2 (density 2) $ sound "8RS*8"
+  ]
+
+d1 silence
+
+d2 silence
+
+d2 $ slow 4 $ striate 2 $ sound "pepsi:3*4"
+  |+| cut "2"
+
+d2 $ slow 8 $ striate 32 $ sound "lovetalk:5"
+  |+| cut "2"
+
+d5 silence
+
+d2 $ slow 8 $ striate 32 $ sound "brass*4"
+  |+| cut "1"
+  |+| gain "0.85"
+  |+| speed "0.2 0.2 0.2 0.3"
+  |+| resonance (slow 64 ((/100) <$> sine1))
+  |+| cutoff (slow 128 ((/100) <$> sine1))
+
+d2 silence
+
+
+d3 $ slow 4 $ chop 3 $ sound "8BD*4"
+ |+| speed (slow 4 ((/1) <$> sine1))
+
+hush
+
+
+-- dark stuff
+d3 $ slow 4 $ stack [
+ every 4 (|+| speed "0.75") $ sound "jv30:1"
+ , sound "jv30:10" |+| speed "0.5"
+ , sound "jv30:10" |+| speed "0.75"
+ , sound "jv30:10" |+| speed "0.25"
+ , sound "jv30:15"
+ ]
+  |+| cut "3"
+
+hush
+
+d3 silence
+
+-- welcome to salem
+d2 $ slow 4 $ sound (samples "jv30orchit*12" (run 12))
+  |+| vowel "a e o"
+  |+| cutoff (slow 12 sine1)
+  |+| resonance ( slow 64 sine1)
+
+d1 $ slow 2 $ stack [
+  sound "8BD:3(3,8)",
+  every 4 (density 2) $ sound "8RS*4"
+  ]
+
+d3 silence
+
+d2 silence
+  
+d1 silence
+
+hush
+
+-- blade frowner
+d2 $ jux (iter 4) $ stack [
+  sound "jv30strings:0",
+--  sound "jv30strings:2",
+--  sound "jv30strings:1",
+  sound "jv30strings:3",
+--  sound "jv30strings:4",
+--  sound "jv30strings:5",
+--  sound "jv30strings:6",
+  sound "jv30strings:7"
+--  sound "jv30strings:8",
+--  sound "jv30strings:9"
+--  sound "jv30strings:10"
+  ]
+  |+| speed (slow 32 "[0.6, 0.8] [0.4, 0.6] [0.8, 0.6] [0.4, 1.2]")
+  |+| cut "1"
+  |+| pan (density 2 sine1)
+  |+| cutoff (slow 4 sine1)
+  |+| resonance (slow 12 sine1)
+
+d1 $ stack [
+  sound "jv30strings2:0",
+--  sound "jv30strings2:2",
+--  sound "jv30strings2:1",
+--  sound "jv30strings2:3",
+--  sound "jv30strings2:4",
+  sound "jv30strings2:5",
+--  sound "jv30strings2:6",
+--  sound "jv30strings2:7",
+--  sound "jv30strings2:8",
+--  sound "jv30strings2:9",
+  sound "jv30strings2:10"
+  ]
+  |+| speed (slow 32 "[0.6, 0.8] [0.4, 0.6] [0.8, 0.6] [0.4, 1.2]")
+--  |+| cut "1"
+  |+| pan (density 2 sine1)
+
+d2 silence
+
+d1 silence
+
+let up = speed . ((1.059466**) <$>)
+
+
+-- sleep
+d3 $ jux (iter 2) $ slow 4 $ striate 32 $ sound "blade:3*2 blade:3"
+  |+| gain "0.65"
+  |+| cutoff (slow 128 ((/2) <$> sine1))
+  |+| resonance (slow 128 ((/2) <$> sine1))
+
+:qd3 silence
+
+d2 $ sound "[bd:6 ~]"
+
+d2 silence
+
+d1 silence
+
+d1 $ slow 32 $ sound "belong [belong:1 ~]"
+  |+| gain "0.5"
+
+d1 $ slow 32 $ sound "belong:2"
+  |+| gain "0.5"
+
+d1 $ slow 32 $ sound "belong:3"
+  |+| gain "0.5"
+
+d4 $ slow 8 $ stack [
+   sound "hh hh hh [hh*4 ~ ~ ~]" 
+]
+   |+| gain "0.7"

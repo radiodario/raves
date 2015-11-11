@@ -1,0 +1,24 @@
+-- hello everyone ;_;
+
+
+
+-- let's do some french filter house
+d1 $ jux (iter 2) $ every 4 (density 2) $ sound "pepsi:5"
+ |+| cut "1"
+ |+| cutoff (slow 32 $ scale 0.1 0.5 $ sine1)
+ |+| resonance (slow 15 $ scale 0.2 0.8 $ sine1)
+
+
+d2 $ silence
+
+d2 $ stack [
+  sound "8BD:1*2"
+] 
+
+hush
+
+d1 $ slow 16
+  $ striate 32 $ sound "lovetalk:3*2"
+  |+| cut "1"
+  |+| cutoff (slow 32 $ scale 0 0.5 $ sine1)
+  |+| resonance (slow 18 $ scale 0 0.8 $ sine1)

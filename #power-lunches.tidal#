@@ -1,0 +1,156 @@
+d2 $ stack [
+  --sound "[kk:5(2, 4)]",
+  sound "cpp:5/2",
+  --every 4 (density 2) $ sound "~ 8CH ~ 8CH",
+  --sound "[~ ~ ~ 8OH:4/2]/2",
+  jux rev $ every 4 (density 0.25) $ sound "8RS*8" |+| gain "0.75",
+  sound "~"
+  ]c
+
+d1 $ jux (iter 4) $ striate 4 $ slow 32 $ sound "amb:1*16"
+ |+| cut "1"
+ |+| gain "0.84"
+ |+| speed (slow 4 "1 1.2")
+ |+| cutoff (slow 64 ((/2) <$> sine1))
+ |+| resonance (slow 64 ((/2) <$> sine1))
+
+d1 $ jux (rev) $ slow 8 $ sound "amb:2"
+|+| speed (slow 4 "1 1.4")
+|+| cut "2"
+
+d1 $ slow 8 $ striate 2 $ sound "amb:4*4"
+|+| cut "4"
+|+| speed "0.5"
+|+| gain "1"
+
+d1 $ slow 8 $ striate 2 $ sound "amb:4*4"
+|+| cut "4"
+|+| speed (slow 4 $ scale 1 0.5 sine1)
+
+d1 $ silence
+
+-- go nuts
+
+cps (150/120)
+
+d3 $ stack [
+  --slow 2 $ sound "kk ~ ~ kk ~ ~ kk ~ kk ~ ~ kk ~ ~ kk ~",
+  --slow 2 $ sound "[kk ~ ~ kk ~ ~ kk ~]*2",
+  --slow 2 $ sound "kk(6,8)",
+  --slow 2 $ sound "kk:2 ~ ~ kk:2 ~ ~ kk:2 ~ ~ ~ kk:2 ~ ~ kk:2 ~ ~",
+  --sound "kk:4*2",
+  --sound "[~ ~ cpp:2 ~]", 
+  --density 4 $ sound "[cpp:2 ~]*2",
+  --sound "boom/4" |+| speed (slow 32 "1 1.2"),
+  --slow 32 $ sound "rave",
+  --jux (iter 4) $ sound "iphone:2",
+  --jux (iter 4) $ striate 32 $ sound "~ iphone:4",
+  --every 4 (density 2) $ sound "8CH:2*4",
+  --sound "8OH*4",
+  sound "8HT(6,8)" |+| speed (slow 64 ((*2) <$> sine1)),
+  --sound "8LT(3,8)",
+  sound "8RS*8" |+| speed (slow 24 ((*2) <$> sine1)),
+  sound "~"
+]
+
+hush
+
+
+d1 $ stack [
+  slow 2 $ sound "kk:4(5,8)",
+  slow 2 $ sound "~ sn:4"
+  ]
+ 
+hush
+
+
+d3 $ silence
+
+|+| cut "1"
+
+d1 $ silence
+
+d1 $ stack [
+  --slow 2 $ sound "kk:8(6,8)",
+  sound "~ cpp:3"
+  ]
+
+d2 $ slow 8 $ striate 8 $ sound "chor"
+ |+| cut "1"
+ |+| speed "0.8"
+ |+| gain "0.9"
+
+d2 $ striate 32 $ slow 4 $ sound "~ chor:2"
+ |+| cut "1"
+ |+| speed "0.8"
+ |+| gain "0.8"
+
+d2 $ silence
+
+d3 $ silence
+
+d3 $ striate 16 $ slow 4 $ sound "chor:3*2"
+ |+| cut "1"
+ |+| gain "0.8"
+ |+| speed "1.1"
+
+d3 $ slow 2 $ stack [
+  sound "909*4",
+  sound "8CH(6,4)" |+| gain "0.85",
+  sound "8OH:2"
+  ]
+
+d4 $ slow 4 $ striate 32 $ sound "boom"
+
+
+
+hush
+
+cps (150/120)
+
+d1 $ slow 2 $ stack [
+  --sound "[8cp ~ 8cp ~]*2",
+  --sound "[~ ~ 8cp ~]*2",
+  --sound "~ ~ 8cp ~",
+  every 4 (density 4) $ sound "8CL*4",
+  --sound "kk:3 ~ ~ kk:3 ~ ~ kk:3 ~ kk:3 ~ ~ kk:3 ~ ~ kk:3 ~",
+  sound "[kk:9 ~ ~ kk:9 ~ ~ kk:9 ~]*2",
+  --sound "ft ~ ~ ft ~ ~ ft ~ ft ~ ~ ft ~ ~ ft ~",
+  --sound "kk ~ ~ kk ~ ~ kk ~ ~  ~ kk ~ ~ kk ~ ~",
+  sound "~"
+]
+
+|+| cutoff (slow 16 ((/2) <$> sinewave1))
+|+| resonance (slow 16 ((/2 <$> sinewave1))
+
+
+
+               
+hush
+
+d3 $ sound "frontliner"
+
+d3 $ striate 16 $ slow 8 $ sound "rave"
+ |+| cut "3"
+
+-- homage
+d1 $ stack [
+  sound "8cp:3/2",
+  sound "8CH*8" |+| gain "0.9",
+  sound "kk ~ kk ~ ~ kk kk ~"
+  ]
+
+d2 $ jux (iter 4) $ sound "iphone:4"
+
+d2 $ jux (iter 4) $ sound "iphone:2(3,2)"
+
+d2 $ every 4 (speed 8) $ sound "8ch:2*4"
+
+d2 $ silence
+d3 $ silence
+
+hush
+
+
+d1 $ striate 32 $ slow 32 $ sound "chor"
+ |+| cut "1"

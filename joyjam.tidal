@@ -1,0 +1,282 @@
+
+# TIDAL BASICS
+
+-- playing a simple sound
+d1 $ sound "can"
+
+-- playing nth sample in a folder
+d1 $ sound "can:2"
+
+d1 $ sound "8BD:3"
+
+
+-- stopping what's playing on d1
+d1 $ silence
+
+-- stop everything
+hush
+
+
+##################################
+# EFFECTS
+##################################
+
+-- vowel
+d1 $ sound "can:1 can:1 can:1 can:1"
+  |+| vowel "a e o u"
+
+hush
+
+-- speed
+d1 $ sound "can:1 can:1 can:1 can:1" |+| speed "0.5 2 3 5"
+
+-- pan
+d1 $ sound "can:1" |+| pan (slow 8 sine1)
+
+hush
+
+
+
+
+
+
+-- layering effects // continuous patterns
+d1 $ sound "arpy"
+  |+| speed "2"
+  |+| vowel "e"
+  |+| pan (slow 4 $ sine1)
+
+--
+hush
+
+##################################
+# Sequences
+##################################
+
+-- playing a few samples
+d1 $ sound "bd sn"
+
+hush
+
+
+
+
+# all sequences have the same length
+
+-- this
+d1 $ sound "bd bd hh hh bd bd hh*4 hh bd bd arpy"
+
+-- just as long as
+d1 $ sound "hh arpy"
+
+--
+hush
+
+-- add a rest:
+d1 $ sound "drum drum:1 ~ drum"
+
+-- 7 step pattern!
+d1 $ sound "drum ~ can ~ ~ cp ~"
+
+hush
+
+-- subdividing sequences
+d1 $ sound "bd [hh hh hh] bd cp"
+
+-- inception!!
+d1 $ slow 4 $ sound "drum drum [can [can:4 can:6 can:3] can:5] drum"
+
+hush
+
+-- layering sequences
+d1 $ sound "drum [can cp, can bd can:5]"
+
+hush
+
+-- roll over patterns
+d1 $ sound "{can can:2, can bd can:5}"
+
+hush
+
+-- use * to repeat a sample:
+d1 $ sound "bd [8RS 8RS 8RS]"
+
+-- same as:
+d1 $ sound "bd 8RS*64"
+
+hush
+
+d1 $ sound "bd cp/2"
+
+-- instant gabba
+bps (150/60)
+d1 $ sound "frontliner*2"
+
+bps (120/60)
+
+hush
+
+-- only every second time:
+d1 $ sound "bd cp/2"
+
+
+
+
+
+-- only randomly
+d1 $ sound "bd cp?"
+
+hush
+
+bps (150/60)
+-- bjorklund's algorithm for juke
+d1 $ sound "8BD:3(7,12)"
+
+bps (108/60)
+d1 $ sound "cp:2(5,12)"
+
+hush
+
+
+##################################
+# functions
+##################################
+
+-- layering patterns
+d1 $ stack [
+  sound "bd ~ bd ~",
+  sound "hh ch hh ch",
+  sound "~ cp/2",
+  sound "casio casio:1 casio:2*2" |+| vowel "a e i"
+  ]
+--   |+| slow 2 (pan sine1)
+
+hush
+
+
+d1 $ slow 3.141592 $ sound "bd bd"
+
+d1 $ density 16 $ sound "bd bd"
+
+hush
+
+-- joining patterns
+d1 $ cat [
+  sound "bd ~ bd ~",
+  sound "casio casio:1 casio:2*2"
+  ]
+
+-- slowly?
+d2 $ slowcat [
+  sound "bd ~ bd ~",
+  sound "casio casio:1 casio:2*2"
+  ]
+
+hush
+
+
+-- slow down a pattern n times
+d1 $ slow 2 $ sound "bd ~ sn bd"
+
+-- speed up a pattern n times
+d1 $ density 2 $ sound "bd ~ sn bd"
+
+-- woot
+d1 $ slow 2 $ sound "bd ~ sn bd ~ [~ bd]/2 [sn [~ bd]/2] ~"
+
+-- reverse a pattern
+d1 $ rev $ slow 2 $ sound "bd ~ sn bd ~ [~ bd]/2 [sn [~ bd]/2] ~"
+
+hush
+
+d1 $ sound "cp" |+| speed "-0.1"
+
+
+-- chop each sample into n bits
+d1 $ chop 16 $ slow 2 $ sound "bd ~ sn bd ~ [~ bd]/2 [sn [~ bd]/2 ] ~"
+
+-- combine with rev!
+d1 $ rev $ chop 64
+    $ sound "bd ~ sn bd ~ [~ bd]/2 [sn [~ bd]/2] ~"
+
+hush
+
+
+##################################
+# META FUNCTIONS
+##################################
+
+-- every:
+
+-- reverse sequence very second time
+d1 $ every 2 rev $ sound "bd can sn can:4"
+
+-- play twice as fast every fourth time
+d1 $ every 4 (density 2) $ sound "bd can sn can:4"
+
+hush
+
+
+-- jux:
+-- applies function to only one speaker
+
+-- reverse pattern on one speaker:
+d1 $ jux rev $ sound "bd sn*2 can [~ arpy]"
+
+-- play 25% faster on one speaker
+d1 $ jux (density 1.25) $ sound "arpy:2 arpy:4 arpy:1 [~ arpy]"
+
+hush
+
+-- weave:
+-- overlays synth paramters over same pattern:
+
+d1 $ weave 16 (pan sine1)
+  [ sound "bd sn",
+    sound "arpy ~ arpy:3",
+    sound "can ~ ~ can:4"
+  ]
+
+ hush
+
+-- Rotation:
+-- forward:
+d1 $ 0.25 ~> sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- back:
+d1 $ 0.25 <~ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- only every fourth time:
+d1 $ every 4 (0.25 ~>) $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+-- iter:
+-- shift to the left 1/4th every cycle
+d1 $ iter 4 $ sound "arpy:1 arpy:2 arpy:3 arpy:4"
+
+-- works great with jux!
+d1 $ jux (iter 4) $ sound "arpy:1 arpy:2 arpy:3 arpy:4"
+
+hush
+
+-- scaling patterns
+d1 $ jux (iter 4) $ sound "arpy arpy:2*2"
+  |+| speed (slow 4 $ scale 1 1.5 sine1)
+
+hush
+
+-- cutting off
+d1 $ sound "blade:2"
+  |+| cut "1"
+  |+| resonance (slow 32 $ scale 0.01 0.971 sine1)
+  |+| cutoff (slow 64 $ scale 0.01 0.75 sine1)
+
+-- running samples
+d1 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+d1 $ sound
+
+d1 $ sound (samples "arpy*4" (run 1))
+
+hush

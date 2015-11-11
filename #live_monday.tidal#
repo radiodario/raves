@@ -1,0 +1,228 @@
+
+
+d1 $ jux (iter 4) $ slow 16
+  $ every 4 (rev)
+  $ every 4 (|+| cut "1")
+  $ striate 4 $ stack [
+  sound "blade:2 [blade:1 blade:2] ~ ~",
+  sound "blade:2*2"
+]
+ |+| gain "0.78"
+ |+| cut "1"
+ |+| cutoff (slow 64 ((/2) <$> sine1))
+ |+| resonance (slow 128 ((/2) <$> sine1))
+
+
+d2 $ slow 2 $ sound "bd:2 ~ {bd:2, cp/2} ~"
+
+hush
+
+d2 $ slow 32 $ sound "[belong belong:1/2]"
+ |+| gain "0.85"
+
+
+d2 $ slow 32 $ sound "belong:3"
+ |+| gain "0.8"
+
+d2 silence
+
+d1 silence
+
+cps (120/60) 
+
+d3 $ stack [
+ sound "bd:3 ~",
+ slow 32 $ sound "[hh*4 ~ ~ ~]*4",
+ sound "cp:2/2" --always use cp:2/cp:1
+ ]
+ |+| gain "0.5"
+
+d3 silence
+
+hush
+
+d1 $ slow 2
+  $ every 2 (0.25 <~)
+  $ sound "organ2 ~ ~ [organ2 ~]"
+  |+| speed "0.5"
+  |+| gain "0.4"
+  |+| delay "1"
+  |+| delayfeedback "1"
+  |+| delaytime "12"
+
+d1 $ slow 8 $ stack [
+  every 4 (|+| speed "1 1.2") $ sound "steel steel*2" |+| cut "0" |+| speed "1"
+ ,sound (samples "8RS*4 8RS ~ ~ 8RS ~ ~ 8HC " (run 4)) |+| gain "0.14"
+  ]
+ |+| gain "0.81"
+  |+| delay "0.9"
+  |+| delayfeedback (slow 128 ((/2) <$> sine1))
+  |+| delaytime "10"
+  |+| cutoff (slow 16 $ scale 0.1 0.875 sine1)
+  |+| resonance (slow 8 $ scale 0.1 0.25 sine1)
+
+d1 silence
+
+d2 $ slow 16
+  $ sound "[[ocean:1 ocean:2] ~ ocean:3 ~]"
+  |+| gain "0.2"
+  |+| delay "0.8"
+  |+| delayfeedback (slow 128 ((/2) <$> sine1))
+  |+| delaytime "15"
+  |+| resonance "0.9"
+  |+| cutoff "0.02"
+
+hush
+
+d1 $ slow 4
+ $ stack [
+   sound "jv30strings2:2",
+   sound "jv30strings2:4",
+   sound "jv30strings2:3",
+   sound "jv30strings2:6",
+   sound "jv30strings2:8"
+   ]
+ |+| gain "0.2"
+ |+| speed (slow 4 "[1 1 0.75 1]")
+ |+| cutoff (slow 64 ((/2) <$> sine1))
+ |+| resonance (slow 64 ((/2) <$> sine1))
+
+
+d1 silence
+
+d2 $ sound "bd:3"
+ |+| gain "0.5"
+
+d2 silence
+
+d2 $ slow 2
+  $ chop 2
+  $ sound "organ2*4"
+  |+| speed "0.5"
+  |+| gain "0.2"
+
+d2 silence
+
+d2 $ slow 4 $ stack [
+--  sound "bd:3*4",
+  sound "8HT*2 ~ ~ ~",
+  sound "~ 8MT*2 ~ ~",
+  sound "~ ~ 8LT [~ 8LT*2]",
+--  sound "8CP*2",
+  sound "8RS*3 8RS ~ ~",
+  every 4 (density 2) $ sound "8HC*4" |+| gain "0.3"
+  ]
+ |+| gain "0.8"
+
+d2 silence
+
+
+d1 $ every 2 (|+| cut "1")
+  $ sound "[steel ~ steel:1 steel*2 ~ ~]"
+  |+| gain "0.7"
+  |+| speed (density 2 "1 0.9")
+
+d1 $ slow 4 $ sound "hh ~ ~ hh ~ ~ hh hh ~ ~ hh ~ hh ~ ~ hh"
+  |+| gain "0.3"
+  
+d2 $ slow 4 $ stack [
+ -- every 4 (|+| cut "1") $ every 4 (0.25 <~) $ sound "east:2 [east:4 east] ~ ~ [east]*3 ~ ~ east:3" |+| gain "0.75"
+-- slow 4 $ sound "blade:2" |+| speed "0.5"
+-- slow 8 $ sound "ocean ocean:2 [~ ocean] ~" |+| speed "0.1" |+| gain "0.75" 
+-- slow 2 $ sound "bd ~ ~ bd:2 ~ ~ bd:3 bd ~ ~ bd ~ bd ~ ~ bd"
+-- ,slow 2 $ sound "~ hh*2 hh ~ ~ hh ~ ~ hh hh ~ hh ~ hh hh ~"
+ --slow 4 $ every 4 (|+| cut "1") $ sound "fado " |+| gain "0.2" |+| cut "1",
+  slow 4 $ sound "jv30orchit*2" |+| gain "0.25"
+  
+  --,slow 4 $ sound "organ2 ~ ~ ~ organ2 organ2 ~ organ2" |+| gain "0.34" |+| cut "0"
+ ]
+  |+| gain "0.45"
+--  |+| cutoff (slow 32 ((/2) <$> sine1))
+--  |+| resonance (slow 64 ((/2) <$> sine1))
+
+d1 $ slow 16 $ sound "belong:3"
+  |+| gain "0.45"
+  |+| cut "0"
+
+d1 silence
+
+d2 silence
+
+hush
+
+d1 silence
+
+
+d2 $ slow 8 $ (degradeBy 0.25) $ striate 16 $ sound "hammer*4 hammer ~ ~"
+  |+| gain "0.7"
+  |+| cut "1"
+  |+| cutoff (slow 32 ((/2) <$> sine1))
+  |+| resonance (slow 32 ((/2) <$> sine1))
+  |+| pan (density 2 sine1)
+
+d2 silence
+
+
+
+-- clapping music
+
+d1 $ slow 4 $ stack [
+  sound "cp cp cp ~ cp cp ~ cp ~ cp cp ~"
+ ,iter 4 $ sound "cp cp cp ~ cp cp ~ cp ~ cp cp ~"
+  ]
+  |+| gain "0.35"
+  |+| resonance (slow 32 ((/2) <$> sine1))
+ 
+
+
+d1 $ slow 4
+  $ stack [
+    sound "cp ~ ~ cp ~ ~ cp cp ~ ~ cp ~ cp ~ ~ cp"
+   ,sound "bd*4"
+    ]
+ |+| gain "0.3"
+  |+| resonance (slow 32 ((/2) <$> sine1))
+  |+| cutoff (slow 64 ((/2) <$> sine1))
+
+d2 $  slow 4 $ striate 128 $ sound "hammer" |+| cut "1"
+ |+| gain "0.45"
+
+hush
+
+d3 $ silence
+
+d3 $ slow 4 $ striate 32 $ sound "~ pepsi ~ [pepsi:2 ~]"
+  |+| cut "1" 
+  |+| gain "0.5"
+
+d1 $ every 4 (rev) $ sound "[bd, hh hh hh [hh hh]*3, cp/2]"
+ |+| gain "0.7"
+
+d2 $ slow 4
+  $ sound "cp ~ cp ~ cp cp ~ cp ~ cp ~ cp"
+ |+| gain "0.7"
+
+d2 silence
+
+d1 silence
+
+hush
+
+
+-- some feel
+d1 $ slow 4
+  $ stack [
+--   every 4 (0.5 <~) $ sound "feel ~ ~ feel:2 ~ ~ feel:3 feel:1 ~ ~ feel:5 ~ feel:6 ~ ~ feel:7" |+| gain "0.4"
+   sound "bd bd ~ ~ bd ~ ~ ~ bd ~ ~ ~ bd ~ ~ cp"
+   ,sound "jam:1" |+| gain "0.4" |+| cut "1"
+   ]
+  |+| gain "0.65"
+    
+d2 $ slow 4 $ sound "sub:3 steel/2"
+  |+| gain "0.8"
+
+
+d2 silence
+
+hush
+

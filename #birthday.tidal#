@@ -1,0 +1,24 @@
+
+d1 $ slow 4 $ striate 64  $ sound "jam:4"
+  |+| cut "1"
+  |+| resonance (slow 16 ((/2) <$> sine1))
+  |+| cutoff (slow 32 ((/2) <$> sine1))
+
+d1 silence
+
+d2 silence
+
+d2 $ sound "pepsi:2"
+  |+| cut "2"
+  |+| resonance (slow 16 ((/2) <$> sine1))
+  |+| cutoff (slow 8 ((/2) <$> sine1))
+
+
+d3 $ jux (rev) $ sound (samples "arpy*8" (run 8))
+  |+| cut "3"
+  |+| speed "0.3 0.25 0.5 1"
+
+hush
+
+d2 $ sound "bd:2*2"
+

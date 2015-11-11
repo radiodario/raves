@@ -1,0 +1,16 @@
+cps (120/60)
+
+d1 $ sound "[bd ~, bd:3 bd:3 ~ ~, ~ ~ sn:3 ~]"
+
+d1 $ sound "[bd, cp/2]"
+
+hush
+
+d2 $ sound "~ ~ cp:3*2 ~"
+
+d3 $ slow 2 $ sound "bd ~  ~ bd sn hh cp"
+
+
+d1 silence
+d2 silence
+d3 silence

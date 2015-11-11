@@ -1,0 +1,469 @@
+d1 $ stack [
+  sound "bd",
+  sound "cp:1/2",
+  sound "hh*8"
+    |+| pan sinewave1
+  ]
+
+hush
+
+
+d1 $ slow 32 $ striate 128 $ sound "beach*2 beach:2*3"
+  |+| cut "0"
+  |+| cutoff (slow 24 sine1)
+  |+| resonance (slow 16 sine1)
+  |+| gain "0.2"
+
+d1 $ slow 16 $ sound "beach" |+| cut "0"
+  |+| hresonance (slow 64 ((/2) <$> sine1))
+  |+| hcutoff (slow 32 ((/2) <$> sine1))
+  |+| delay "1"
+  |+| delayfeedback (slow 256 (sine1))
+  |+| delaytime (slow 128 ((*1) <$> sine1))
+
+d1 silence
+
+
+d2 $ slow 16 $ striate 32 $ sound "organ2*3 organ2*2 ~ organ2*4" |+| cut "0"
+  |+| pan (slow 16 sine1)
+
+d1 $ stack [
+  sound "sub*2" |+| cut "1"
+ ,sound "bd:2" |+| cut "1"
+ ] |+| gain "0.98"
+
+
+d1 $ iter 4 $ sound "bd:2 cp hh hh"
+
+hush
+
+cps (120/60)
+
+
+-- 808 tribal
+d1 $ slow 2 $ stack [
+  sound (samples "8BD*2" (run 64)),
+  every 4 (density 2) $ sound (samples "8CP*2" (run 8)),
+  sound (samples "8LC*2" (run 3)),
+  sound "~ 8HT*2",
+  sound "8MT",
+  sound "8LT(3,4)",
+  sound "8CP*3",
+  every 4 (density 2) $ sound "8CY",
+  sound "8MC:1*3"
+  ]
+
+hush
+
+d1 $ slow 4 $ sound "8BD:3 ~ ~ ~ 8BD:3 8BD:3"
+
+d2 $ slow 4 $ sound "sub:1 ~ ~ sub:1 sub:1" |+| cut "1"
+
+d2 silence
+
+d1 silence
+
+d3 silence
+
+d1 $ sound "hh"
+
+d1 silence
+
+d1 $ sound "bd:3"
+
+
+d2 $ slow 32 $ striate 64 $ sound "beach"
+  |+| cut "1"
+  |+| speed "0.6"
+  |+| gain "0.52"
+
+-- smurd 
+d1 $ stack [
+  sound "bd:1",
+  sound "[db:3]/4"
+  ]
+  |+| gain "0.5"
+
+
+d1 silence
+
+d2 silence
+
+-- all your friends are in a boring party
+d1 $ stack [
+  sound "bd:2"
+  ,sound "hh*4" |+| gain sine1
+  ,every 4 (density 2) $ sound "8CP*2"
+  ,every 4 (rev) $ slow 8 $ sound "~ [latibro*4 latibro latibro:2 latibro:1*2]" |+| delay "0.2"
+]
+
+hush
+
+d3 silence
+
+d4 silence
+
+d4 $ slow 4 $ stack [
+   sound "8RS 8RS ~ 8RS 8RS 8RS ~ ~"
+  ,sound "~ 8HT ~ 8HT*2"
+  ,sound "~ ~ 8MT*2 ~"
+  ,sound "8CP*2"
+  ,sound "8HC*4" |+| speed "1 0.5"
+  ,sound "8BD:3*4" 
+] |+| gain "1" |+| pan sine1
+
+d3 $ slow 4 $ sound (samples "sub" (run 4)) 
+  
+d2 $ slow 4 $ sound "sub sub(2,4)" |+| speed "2"
+
+d2 $ slow 64 $ striate 256 $ jux (rev) $ sound "beach*3"
+d2 silence
+
+d1 $ sound "8MT(3,4)"
+
+hush
+
+
+d6 $ jux (iter 4) $ weave 16 (shape $ scale 0.3 0.7 sine1)
+[sound "8MT(3,8)",
+ sound "8LT(5,12)",
+ every 4 (density 1.5) $ sound "bd*3",
+ slow 2 $ smash 4 [1,2,3,4] $ sound "arpy:0 arpy:1"
+ ]
+
+--
+
+d1 $ slow 2 $ sound (samples "future*32" (run 32))
+
+hush
+
+cps (120/60)
+
+-- all i do is think about you
+d1 $ stack
+  [
+    slow 8 $ striate 16 $ stack [
+       -- sound "stevie" 
+       --sound "stevie:1/2" 
+       sound "stevie:2*2"
+       --,sound "stevie:3" 
+    ] |+| cut "1" |+| speed "1 1 1 1"
+    --,sound "bd:2"
+    ,sound "8CP/2"
+    ,sound "hh 8OH*2" |+| gain (slow 32 ((/2) <$> sinewave1)) |+| cut "2"
+  ]
+  -- |+| cut "1"
+  |+| cutoff (slow 64 ((/2) <$> sinewave1))
+  |+| resonance (slow 128 ((/2) <$> sinewave1))
+
+hush
+
+
+
+-- pump it up yo - 8 / 16
+-- use 8/4 for normal
+-- use 8/16 for chopped up
+d1 $ slow 8 $ striate 16 $ stack [
+  --sound "[jam, jam:1/2]"
+  --sound "[jam:1, jam:2/2]*2"
+  --sound "[jam:2, jam:3/2]"   -- pump up the jam pump it up
+  --sound "[jam:4*2]" 
+  sound "[jam:4, jam:5/2]"
+  --sound "jam:1 ~ ~ ~ ~ ~ ~ ~ "
+  ] |+| cut "1"
+--    |+| hcutoff (slow 32 ((/2) <$> sinewave1))
+    |+| cutoff (slow 16 ((/2) <$> sinewave1))
+    |+| resonance (slow 16 ((/2) <$> sinewave1))
+
+d1 silence
+
+d2 $ density 32 $ sound (samples "jam" (run 6))
+  |+| cut "1"
+
+hush
+
+d2 $ sound "8CP*2" |+| gain "0.76"
+
+d2 silence
+
+d1 $ sound "cp:0" |+| cut "1"
+
+hush
+
+
+-- saint bipsi disco
+d1 $ slow 4
+  $ striate 2
+  $ chop 2
+  $ within (0.75, 1) (|+| speed "0.5")
+  $ sound "pepsi:4"
+  |+| cut "1"
+ -- |+| gain (slow 2 "1 0")
+ |+| cutoff (slow 64 ((/2) <$> sinewave1))
+ |+| resonance (slow 32 ((/2) <$> sinewave1))
+
+hush
+
+d1 $ slow 4 $ striate 16 $ sound "[pepsi:7, pepsi:8/2]" |+| cut "1"
+ -- |+| gain (slow 2 "1 0")
+  |+| cutoff (slow 64 ((/2) <$> sinewave1))
+  |+| resonance (slow 64 ((/2) <$> sinewave1))
+
+
+d1 $ slow 4 $ striate 16 $ sound "[pepsi:9, pepsi:10/2]" |+| cut "1"
+
+
+d1 $ slow 4 $ striate 16 $ sound "[pepsi:10, pepsi:11/2]" |+| cut "1"
+
+hush
+
+
+-- hamer it home
+d1 $ slow 4 $ chop 2
+  $ every 2 (0.25 <~)
+  $ whenmod 2 0 (rev)
+--  $ whenmod 6 3 (striate 8)
+  $ sound "hammer:2 hammer:2/2" |+| cut "1"
+
+d1 silence
+
+hush
+
+-- blaze
+d1 $ slow 8 $ chop 1 $ sound "mgs:2*2"
+  |+| cut "1"
+  |+| vowel (slow 4 "a o u e")
+  |+| gain "0.4"
+
+d1 silence
+
+d2 $ stack [
+  sound "bd:2",
+  sound "8CP/2"
+  --every 4 (density 2) $ sound "~ 8OH" |+| gain "0.8",
+  --sound "hh*4" |+| gain (slow 2 sinewave1),
+  --sound "co ~ ~"
+  ]
+
+d3 $ slow 4 $ sound "sub:3*4"
+ |+| speed (slow 4 "1 1 1.25 1.5")
+
+d3 silence
+
+hush
+
+
+d1 silence
+
+d2 $ slow 2 $ every 4 (density 2) $ sound "hammer:1"
+ |+| cut "2"
+-- |+| cutoff (slow 64 ((/2) <$> sinewave1))
+-- |+| resonance (slow 128 ((/3) <$> sinewave1))
+
+hush
+
+d2 silence
+
+-- some drums
+d8 $ stack [
+  every 4 (density 2) $ sound "~ 8RS",
+  sound "~ 8SD:3",
+  every 4 (rev) $ sound "8CL*2 8CL" |+| speed (slow 128 sinewave1) |+| gain "@.8"
+ ]
+  |+| gain "1"
+
+
+  
+d7 $ sound "bd:2 ~"
+
+d7 silence
+d8 silence
+
+-- organic two
+d1 $ slow 4 $ striate 8 $ sound "organ2*2 organ2 [organ2*2 organ2] ~"
+ |+| cut "1"
+ |+| gain "0.9"
+ |+| speed (slow 2 "1 1 0.75 0.5")
+
+d1 silence
+
+d2 $ slow 8 $ striate 16 $ every 0 (rev) $ sound "organ2*2 organ2 [organ2*2 organ2] ~"
+ |+| cut "2"
+ |+| speed (slow 2 "1 1 0.75 0.5")
+ |+| gain "0.35"
+ |+| crush "16"
+-- |+| coarse "4"
+ |+| pan (slow 2 sinewave1)
+
+d2 silence
+
+d3 $ slow 16
+  $ sound "[organ2*2 organ2] organ2 [organ2*2 organ2] ~"
+ |+| cut "3"
+ |+| speed (slow 2 "1 1 0.75 0.5")
+ |+| delay (slow 2 "1")
+ |+| delayfeedback "1"
+ |+| delaytime "0.25"
+ |+| gain "0.75"
+ |+| cutoff (slow 64 ((/2) <$> sinewave1))
+ |+| resonance (slow 32 ((/2) <$> sinewave1))
+
+d3 silence
+
+d4 $ slow 8 $ sound "organ2*4"
+  |+| speed "0.25"
+
+d4 $ slow 4
+  $ sound "bd:2*4"
+ |+| gain "0.8"
+
+d4 silence
+
+d3 silence
+
+hush
+
+
+-- slow down man
+d1 $ slow 4 $ striate 64 $ sound "moomvox*4"
+ |+| speed "0.5"
+ |+| cut "1"
+ |+| gain "0.75"
+ |+| cutoff (slow 64 ((/2) <$> sine1))
+ |+| resonance (slow 32 ((/2) <$> sine1))
+ |+| delay "0.31"
+ |+| delayfeedback "0.13"
+ |+| delaytime "1"
+
+d1 silence
+
+d7 silence
+
+d7 $ stack[
+  sound "8BD:3 ~"
+  ,sound "[~ cp:1]/2" |+| gain "0.8"
+  ,sound "[8MC 8MC/2]/2" |+| speed "0.7 0.5 0.2 1"
+  ,sound "~ 8HT" |+| speed (slow 2 "1 1.2")
+ ]
+
+|+| cut "1"
+
+hush
+
+-- do you like acids 
+d3 $ slow 16 $ jux (rev) $ striate 8
+  $ sound "[303:0 ~] [~ 303:0]"
+  |+| cut "1"
+  |+| resonance (slow 64 ((/2) <$> sinewave1))
+  |+| cutoff (slow 32 ((/2) <$> triwave1))
+ 
+hush
+
+d1 $ stack [
+  sound "bd:3"
+ -- every 4 (density 2) $ sound "~ ho" |+| gain "0.7"
+  ]
+
+  
+
+d4 $ slow 4 $ sound "organ2"
+ |+| cut "4"
+
+d4 silence
+
+d6 $ sound "[~ ho, hh hh]*2"
+  |+| cut "3"
+
+d6 silence
+d7 silence
+d8 silence
+
+d3 $ sound "~ sub*4"
+  |+| cut "2"
+  |+| gain (slow 2 "0 1 0")
+
+d3 silence
+
+d8 $ stack [
+  every 4 (density 2) $ sound "~ 8RS",
+  sound "~ 8SD:3",
+  every 4 (rev) $ sound "8CL*2 8CL" |+| speed (slow 128 sinewave1) 
+ ]
+  |+| gain "0.57"
+
+d7 silence
+
+d1 silence
+
+d2 $ sound "{mbd:2, ~ mbd:4*2}"
+
+d2 silence
+
+
+cpm (120/60)
+
+-- ásid
+d1 $ slow 16
+  $ striate 4
+  $ sound "303:1"
+  |+| cut "1"
+  |+| cutoff (slow 64 ((/2) <$> sine1))
+  |+| resonance (slow 64 ((/2) <$> sine1))
+  |+| shape (slow 64 sine1)
+
+d1 silence
+
+hush
+
+d2 $ slow 4 $ stack [
+  --sound (samples "drumtraks*16" (run 32)) |+| cut "1"
+  sound "mbd:4*4"
+  --,sound "hh*16"
+  ]
+
+d2 silence
+  
+d3 $ slow 4 $ every 4 (density 2) $ sound "brass:2 brass:4"
+  |+| cut "2"
+  |+| gain "1"
+  |+| hcutoff (slow 64 ((/2) <$> sine1))
+  |+| hresonance (slow 64 ((/2) <$> sine1))
+  |+| cutoff (slow 128 ((/2) <$> sine1))
+  |+| resonance (slow 128 ((/2) <$> sine1))
+  |+| vowel "a a a u"
+
+
+hush
+
+
+
+d1 $ slow 8
+ $ striate 2
+ $ every 4 (rev)
+ $ sound "hammer:0*2"
+  |+| hcutoff (slow 64 ((/2) <$> sine1))
+  |+| hresonance (slow 64 ((/2) <$> sine1))
+  |+| cutoff (slow 128 ((/2) <$> sine1))
+  |+| resonance (slow 128 ((/2) <$> sine1))
+
+
+hush
+
+d3 $ chop 128 $ sound (samples "alphabet*64" (run 27))
+  |+| gain "0.34"
+  |+| cut "1"
+
+d3 silence
+
+
+d2 $ every 8 (density 2)
+  $ sound "[8CH 8OH]" |+| cut "1"
+
+
+
+d1 $ slow 8 $ sound "[8RS [8RS 8RS]*2 8RS 8RS*3 8RS 8RS {8RS, click}]" |+| speed "0.9"
+
+hush
+
+
+d1 $ sound "[bd, hh*4]"

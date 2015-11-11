@@ -1,0 +1,81 @@
+
+d1 $ slow 2 $ sound "iphone*2 [iphone ~] iphone [~ iphone*5]"
+  |+| cut "1"
+  |+| gain "0.55"
+  |+| end "0.1 0.1 0.75 0.1"
+
+d2 $ sound "~ [~ iphone:1] ~ [iphone:1 ~]"
+  |+| cut "2"
+  |+| end "0.3 0 0 0.8"
+
+d1 $ sound "iphone*4"
+  |+| end "0.1"
+  |+| gain "0.32"
+
+
+
+d1 $ stack [
+  sound "[hc(7,12)]",
+  sound "8BD*2"
+  ]
+
+hush
+
+d1 silence
+
+
+
+d3 $ stack [
+  sound "8BD*2",
+  sound "8CP/2"
+  ]
+
+bps (120/60)
+
+hush
+
+
+d1 $ sound "bd [bd arpy sn:2 arpy:2]*4/3"
+
+
+d1 $ weave 16 (pan sine1)
+  [sound "bd sn", sound "arpy ~ arpy:3", sound "can ~ ~ can:4"]
+
+d1 $ weave 16 (sound "arpy arpy:7 arpy:3")
+  [vowel "a e i", vowel "o i", vowel "a i e o", speed "2 4 ~ 2 1"]
+
+hush
+
+
+d1 $ weave' 16 (sound (samples "arpy*8" (run 8)))
+-- we use |+| at the end to pick up the pattern of the vowel
+-- rather than the patter on the sounds
+  [(vowel "a e o" |+|),
+   (vowel "a e o i" |+|)]
+
+
+
+d1 $ jux (iter 2) $ weave' 16 (sound (samples "arpy*8" (run 8)))
+ [(speed "1 1.5 2 4" |+|),
+  (speed "0.5 0.5 0.5 0.75" |+|)]
+  
+
+-- you can use the composing haskell operator to compose functions
+-- in this case, every 2, we chop 8 -> play twice as fast -> reverse
+-- . composes right to left 
+d1 $ every 2 (rev . density 2 . chop 8) $ sound "pepsi"
+
+hush
+c
+
+
+
+
+d1 $ every 2 (jux (striate 2 . rev)) $ sound (samples "[arpy*4 ~]*4" (run 8)) |+| accelerate (density 8 $ scale 1 50 sine1)
+
+d1 $ every 2 (jux (striate 2 . rev)) $ sound (samples "[arpy*4 ~]*4" (run 8)) |+| accelerate (density 8 $ scale 1 50 sine1)
+
+
+
+
+d2 $ sound "horn"

@@ -1,0 +1,68 @@
+-- hellow everyone
+-- this is my first algorave
+-- please dance
+
+cps (150/120)
+
+hush
+
+d1 $ stack [
+  --slow 2 $ sound "kk:4*4",
+  slow 2 $ sound "[kk ~ ~ kk ~ ~ kk ~]*2",
+  sound "boom/8",
+  sound "~ ~ cpp:4 ~",
+  sound "~"
+  ]
+
+-- reverted
+
+cps (120/120)
+
+d1 $ slow 4 $ sound "piano:1"
+--  |+| cut "1"
+  |+| cutoff (slow 64 ((/2) <$> sine1))
+  |+| resonance (slow 64 ((/2) <$> sine1))
+  |+| gain (slow 16 sine1)
+
+d1 $ silence
+
+
+d2 $ stack [
+  sound "kk:9*2",
+  every 4 (density 4) $ sound "8RS*4",
+  sound "~ ~ cpp:3 ~" |+| gain "1.3",
+  sound "8CH(16,8)" |+| speed (slow 32 ((*2) <$> sine1)),
+  sound "8OH*4" |+| gain (slow 4 sine1),
+  sound "~"
+  ]
+
+  hush
+
+d1 $ slow 8 $ sound "pk:0 ~ pk:2 ~"
+
+d1 silence
+
+d2 $ slow 8 $ sound "mep"
+ |+| cut "1"
+
+
+
+d1 $ stack [
+  sound "kk:4*2",
+  --sound "~ ~ ~ cpp:2",
+  sound "~"
+  ]
+  
+d3 $ slow 8 $ striate 4 $ sound "chem*4"
+ |+| cut "2"
+
+
+d2 $ slow 8 $ striate 4 $ sound "bis"
+ |+| cut "1"
+
+ hush
+
+d2 $ slow 8 $ striate 4 $ sound "guit:2*8"
+ |+| cut "1"
+ |+| cutoff (slow 64 ((/2) <$> sinewave1))
+ |+| resonance (slow 32 ((/2) <$> sinewave1))

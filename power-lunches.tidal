@@ -1,8 +1,8 @@
 d2 $ stack [
-  --sound "[kk:5(2, 4)]",
+  sound "[kk:5(2, 4)]",
   sound "cpp:5/2",
-  --every 4 (density 2) $ sound "~ 8CH ~ 8CH",
-  --sound "[~ ~ ~ 8OH:4/2]/2",
+  every 4 (density 2) $ sound "~ 8CH ~ 8CH",
+  sound "[~ ~ ~ 8OH:4/2]/2",
   jux rev $ every 4 (density 0.25) $ sound "8RS*8" |+| gain "0.75",
   sound "~"
   ]
@@ -29,29 +29,35 @@ d1 $ slow 8 $ striate 2 $ sound "amb:4*4"
 
 d1 $ silence
 
+d3 $ silence
+
+hush
+
 -- go nuts
 
 cps (150/120)
 
 d3 $ stack [
   --slow 2 $ sound "kk ~ ~ kk ~ ~ kk ~ kk ~ ~ kk ~ ~ kk ~",
+  --sound "~ ~ cpp ~",
   --slow 2 $ sound "[kk ~ ~ kk ~ ~ kk ~]*2",
   --slow 2 $ sound "kk(6,8)",
   --slow 2 $ sound "kk:2 ~ ~ kk:2 ~ ~ kk:2 ~ ~ ~ kk:2 ~ ~ kk:2 ~ ~",
   --sound "kk:4*2",
   --sound "[~ ~ cpp:2 ~]", 
-  --density 4 $ sound "[cpp:2 ~]*2",
+  --density 16 $ sound "[cpp:2 ~]*2",
   --sound "boom/4" |+| speed (slow 32 "1 1.2"),
-  --slow 32 $ sound "rave",
+  --density 16 $ slow 32 $ sound "rave",
   --jux (iter 4) $ sound "iphone:2",
   --jux (iter 4) $ striate 32 $ sound "~ iphone:4",
   --every 4 (density 2) $ sound "8CH:2*4",
   --sound "8OH*4",
   sound "8HT(6,8)" |+| speed (slow 64 ((*2) <$> sine1)),
-  --sound "8LT(3,8)",
-  sound "8RS*8" |+| speed (slow 24 ((*2) <$> sine1)),
+  sound "8LT(3,8)",
+  --sound "8RS*8" |+| speed (slow 24 ((*2) <$> sine1)),
   sound "~"
 ]
+
 
 hush
 

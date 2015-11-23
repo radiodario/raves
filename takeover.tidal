@@ -18,11 +18,13 @@ d2 silence
 
 -- some swing
 d2 $ stack [
-  sound "bd:2 ~",
-  every 4 (density 2) $ sound (samples "east*4" (run 24))
---  slow 4 $ sound "[~ hc ~ hc]*2" |+| gain "0.23",
---  slow 8 $ sound "8HT*2" |+| speed (slow 16 "1.1 1.2 1.3 1.2"),
-  ,sound "~ 8CP/2"
+  density 2 $ sound "[kk:2 ~]",
+  every 4 (density 2) $ sound (samples "east*4" (run 24)),
+  --slow 4 $ sound "[~ hc ~ hc]*2" |+| gain "0.23",
+  --slow 8 $ sound "8HT*2" |+| speed (slow 16 "1.1 1.2 1.3 1.2"),
+  sound "~ cpp:2",
+  --slow 2 $ sound "8RS*16" |+| gain "0.2",
+  sound "~"
 ]
  |+| cut "0"
  |+| gain "1"
@@ -34,6 +36,8 @@ d2 silence
 
 
 -- ranas
+
+
 d1 $ $ stack [
   slow 4 $ striate 8 $ sound "organ2 ~ ~ [organ2*4 ~]" |+| speed (density 2 "1 0.5")
  -- jux (iter 4) $ slow 4 $ striate 8 $ sound "jam" |+| gain "1" |+| speed "0.5",
@@ -52,7 +56,7 @@ d1 silence
 hush
 
 -- cantantes
-d1 $ slow 32 $ jux (rev) $ chop 128 $ sound "pebbles*32 pebbles 8HT 8LT"
+d1 $ slow 16 $ jux (rev) $ chop 128 $ sound "pebbles*32 pebbles 8HT 8LT"
   |+| pan (density 8 sine1)
   |+| gain (slow 4 sine1)
 

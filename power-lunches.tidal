@@ -1,11 +1,75 @@
+
+-- hola
+-- salut
+-- hai
+
+
+d1 $ striate 2 $ sound "amb:3*4 ~ ~ ~"
+  |+| cut "3"
+  |+| speed (scale 0.9 1.5 sine1)
+  
+
+d1 silence
+
+d2 $ stack [
+  --slow 4 $ sound "~ tino" |+| cut "1" |+| cutoff (slow 16 $ scale 0.1 0.01 sine1) |+| resonance "0.2",
+  --sound "kk:4*2",
+  --sound "cpp:2",
+  --sound "8RS*8" |+| speed (slow 16 $ scale 0.5 2 sine1),
+  --striate 2 $ sound "conga" |+| cut "2",
+  --striate 4 $ sound "fado" |+| cut "4",
+  --every 4 (density 2) $ sound "~ 8CH(3,4)",
+  --slow 2 $ sound "[~ ~ 8OH:3 ~]",
+  --striate 2 $ sound "pepsi" |+| cut "2" |+| cutoff "0.05" |+| resonance "0.1",
+  --striate 2 $ sound "jungle:2*4",
+  --striate 4 $ sound "~ bas:6" |+| cut "1",
+  sound "~"
+  ]
+
+d1 $ sound "kk:5*2"
+
+d1 silence
+
+d2 $ jux (iter 4) $ stack [
+  --sound "kk:4*2",
+  sound "cpp:4",
+  --striate 1 $ sound (samples "pepsi*4" (run 4)),
+  --sound "pepsi:1" |+| cut "1",
+  sound "~"
+  ]
+  |+| cutoff (slow 32 $ scale 0.01 0.2 sine1)
+  |+| resonance (slow 32 $ scale 0.01 0.5 sine1)
+
+hush
+
+d1 $ silence
+
+hush
+
+
+d3 $ stack [
+  sound "kk:5*2",
+  sound "~"
+  ]
+
+
+
+
+cps 1
+
 d2 $ stack [
   sound "[kk:5(2, 4)]",
   sound "cpp:5/2",
   every 4 (density 2) $ sound "~ 8CH ~ 8CH",
   sound "[~ ~ ~ 8OH:4/2]/2",
-  jux rev $ every 4 (density 0.25) $ sound "8RS*8" |+| gain "0.75",
+  --jux rev $ every 4 (density 0.25) $ sound "8RS*8" |+| gain "0.75",
   sound "~"
   ]
+
+d2 silence
+
+
+hush
 
 d1 $ jux (iter 4) $ striate 4 $ slow 32 $ sound "amb:1*16"
  |+| cut "1"
@@ -86,23 +150,25 @@ d2 $ slow 8 $ striate 8 $ sound "chor"
  |+| speed "0.8"
  |+| gain "0.9"
 
-d2 $ striate 32 $ slow 4 $ sound "~ chor:2"
+d2 $ striate 8 $ slow 4 $ sound "~ chor:2"
  |+| cut "1"
- |+| speed "0.8"
+ |+| speed "1.1"
  |+| gain "0.8"
 
 d2 $ silence
 
 d3 $ silence
 
-d3 $ striate 16 $ slow 4 $ sound "chor:3*2"
+d3 $ striate 8 $ slow 4 $ sound "chor:3*2"
  |+| cut "1"
  |+| gain "0.8"
  |+| speed "1.1"
 
-d3 $ slow 2 $ stack [
-  sound "909*4",
-  sound "8CH(6,4)" |+| gain "0.85",
+d4 $ slow 2 $ stack [
+  sound "kk*4",
+  sound "8RS*4",
+  sound "cpp:2*2",
+  sound "8CH(8,4)" |+| gain "0.85",
   sound "8OH:2"
   ]
 
@@ -116,19 +182,29 @@ cps (150/120)
 
 d1 $ slow 2 $ stack [
   --sound "[8cp ~ 8cp ~]*2",
-  --sound "[~ ~ 8cp ~]*2",
+  --sound "[~ ~ cpp:2 ~]*2",
   --sound "~ ~ 8cp ~",
-  every 4 (density 4) $ sound "8CL*4",
-  --sound "kk:3 ~ ~ kk:3 ~ ~ kk:3 ~ kk:3 ~ ~ kk:3 ~ ~ kk:3 ~",
-  sound "[kk:9 ~ ~ kk:9 ~ ~ kk:9 ~]*2",
+  --sound "cpp:4*4",
+  --every 4 (density 4) $ sound "8CL*4" |+| speed (scale 0.8 1.9 sine1),
+  --sound "kk:4 ~ ~ kk:4 ~ ~ kk:4 ~ kk:4 ~ ~ kk:4 ~ ~ kk:4 ~",
+  --striate 8 $ slow 2 $ sound "[acd:2 ~]*4" |+| cut "3" |+| speed (scale 0.4 0.5 sine1),
+  --sound "8RS*16" |+| speed (scale 0.5 1 sine1),
+  slow 2 $ striate 8 $ sound "bas:2" |+| cut "1",
+  --sound "[kk:9 ~ ~ kk:9 ~ ~ kk:9 ~]*2",
   --sound "ft ~ ~ ft ~ ~ ft ~ ft ~ ~ ft ~ ~ ft ~",
   --sound "kk ~ ~ kk ~ ~ kk ~ ~  ~ kk ~ ~ kk ~ ~",
   sound "~"
 ]
 
+--d1 $ sound "bas" |+| cut "1"
+
+hush
+
 |+| cutoff (slow 16 ((/2) <$> sinewave1))
 |+| resonance (slow 16 ((/2 <$> sinewave1))
 
+
+d3 silence
 
 
                

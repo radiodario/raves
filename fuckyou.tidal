@@ -1,0 +1,36 @@
+d1 $ sound "can"
+
+hush
+
+
+d1 $ stack [
+  sound "kk:4*2",
+  sound "~ cpp:2 ~ ~",
+  sound "8LT 8HT ~ 8MT" |+| speed (slow 4 "0.8 1"),
+  sound "8RS*8" |+| speed (slow 16 $ scale 0.5 2 sine1),
+  every 4 (density 2) $ sound "[~ 8CH]*2",
+  slow 8 $ striate 4 $ sound "bas:2*8" |+| cut "3",
+  --slow 8 $ striate 4 $ sound "amb:1*4" |+| cut "2",
+  --slow 16 $ sound "belong:4" |+| cut "1",
+  sound "~"
+  ]
+
+-- rehearse
+
+d2 $ stack [
+  --sound "kk:8*2",
+  --sound "kk:3*2",
+  --sound "kk:4*2",
+  --sound "8RS*8" |+| speed (slow 4 $ scale 0.5 2 sine1),
+  --sound "~ ~ ~ cpp:3",
+  --sound "8CH*4",
+  --sound "~ 8CH/2",
+  --slow 16 $ sound "tino" |+| cut "1", 
+  --slow 8 $ striate 2 $ sound "bas:3*4" |+| cut "4",
+  --slow 4 $ striate 8 $ sound "amb:1*8" |+| cut "2" |+| speed (slow 4 $ scale 0.5 1.5 sine1),
+  --slow 8 $ jux rev $ every 4 (density 2) $ striate 4 $ sound "chor:1" |+| cut "3",
+  sound "~"
+  ]
+
+
+hush

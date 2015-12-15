@@ -3,20 +3,24 @@ bps (160/120)
 d1 $ (every 4 (slow 4 . rev . stut 8 0.3 0.1)) $
 stack [
   density 2 $ sound "kk:4 [~ kk:4]" |+| speed "1.5",
-  iter 16 $ striate 8 $ sound "amb:3*2" |+| cut "1" |+| gain "0.85" |+| speed (slow 2 $ scale 0.5 2 sine1),
-  iter 16 $ striate 2 $ sound "bas:2*4" |+| cut "2" |+| speed "1",
+  iter 4 $ striate 4 $ sound "amb:0*2" |+| cut "1" |+| gain "0.85" |+| speed (slow 2 $ scale 0.5 2 sine1),
+  iter 2 $ striate 2 $ sound "bas:1*4" |+| cut "2" |+| speed "1",
   sound "~"
   ]
   -- |+| shape (scale 0.1 0.8 $ slow 4.1 sine)
+ |+| shape "0.2"
+
+d1 silence
 
 d2 $ stack [
   --sound "kk:2 ~ ~ kk:2 ~ ~ kk:2 ~ ~ ~ kk:2 ~ ~ kk:2 ~ ~",
-  --every 8 (slow 4 . rev. stut 8 0.3 0.1) $ sound "cpp:4*4" |+| cut "1",
+  --every 8 (slow 4 . stut 8 0.3 0.1) $ sound "cpp:4*4" |+| cut "1",
   --sound "8RS*8" |+| speed (scale 0.5 2.5 $ slow 16.2 sine1),
   --sound "can*16",
   --striate 4 $ sound "fado*4" |+| cut "2" |+| speed "1",
-  sound "8OH [~ 8CH*4]",
-  sound "kk:5*4",
+  --sound "8OH [~ 8CH*4]",
+ -- iter 16 $ striate 4 $ sound "acd:2*4" |+| cut "4",
+  --sound "kk:5*4",
   sound "~ [~ cpp:2]",
   sound "~"
   ]
@@ -25,3 +29,120 @@ d2 $ stack [
 
 
 hush
+
+
+-- get tribal
+
+d2 $ stack [
+  --(slow 4) $ iter 4 $ striate 4 $ sound "acd:1*8" |+| cut "2", 
+  sound "kk:4*4" |+| chan2,
+  sound "[~ cpp:2]*2" |+| chan1,
+  whenmod 4 2 (density 2) $ slow 4 $ iter 8 $ striate 4 $ sound "conga*4" |+| cut "1" |+| chan1,
+  --slow 4 $ iter 16 $ striate 4 $ sound "bas:1*8" |+| cut "2" |+| chan4,
+  --iter 4 $ striate 2 $ slow 2 $ sound "chor:2*2" |+| cut "4" |+| chan3,
+  --iter 4 $ striate 16 $ slow 2 $ sound "tino*8" |+| cut "3",
+  sound "~"
+  ] 
+
+hush
+
+
+-- MULTICHANNEL
+
+let chan1 = pan "0.062"
+
+let chan2 = pan "0.312"
+
+let chan3 = pan "0.562"
+
+let chan4 = pan "0.812"
+
+cps (160/120)
+
+d1 $ stack [
+  whenmod 32 16 (slow 4) $sound "8RS*8",
+  sound "cpp:2",
+  sound "~"
+]
+  |+| chan1
+  |+| cut "1"
+
+d2 $ stack [
+  --iter 4 $ slow 2 $ sound "kk:1 ~ ~ kk:1 ~ ~ kk:1 ~ ~ ~ kk:1 ~ ~ kk:1 ~ ~",
+  sound "kk:4*2",
+  sound "~"
+  ]
+  |+| chan2
+  |+| cut "2"
+
+d3 $ every 8 (slow 8 . rev . stut 8 0.5 0.1) $ stack [
+  iter 4 $ slow 2 $ striate 4 $ sound "chor:1*4" |+| speed "1",
+  sound "~"
+]
+  |+| chan3
+  |+| cut "3"
+
+d4 $ stack [
+  iter 4 $ slow 4 $ striate 2 $ sound "bas:2*4",
+  sound "~"
+  ]
+  |+| chan4
+  |+| cut "4"
+
+d4 silence
+
+d1 silence
+
+hush
+
+
+
+-- look at you
+d1 $ stack [
+  --sound "kk:8*2",
+  sound "8LT ~ 8HT*2 8MT",
+  --sound "8RS*8" |+| speed (slow 16 $ scale 0.5 2 sine1),
+  sound "8CP:2",
+  sound "8CH*8",
+  sound "[8OH ~]/2",
+  --slow 4 $ striate 8 $ sound "bbs",
+  --slow 4 $ striate 8 $ sound "brandy:0" |+| cut "1",
+  sound "~"
+  ] |+| chan1
+
+d2 $ stack [
+  --slow 2 $ sound "kk:3 ~ ~ kk:3 ~ ~ kk:3 ~ ~ ~ kk:3 ~ ~ kk:3 ~ ~",
+  sound "kk*2",
+  --sound "cpp:3",
+  sound "~"
+  ] |+| chan2
+
+d3 $ stack [
+  slow 8 $ striate 8 $ sound "brandy:0",
+-- iter 4 $ slow 8 $ striate 8 $ sound "barp:1",
+  sound "~"
+  ] |+| chan3
+
+d4 $ stack [
+  --iter 4 $ slow 4 $ trunc 0.5 $ striate 32 $ sound "bas:0",
+  sound "~"
+  ] |+| chan4
+
+d1 silence
+
+hush
+
+d1 $ (0.5 <~) $ slow 8 $ striate 2 $ sound "brandy:2"
+  |+| cut "1"
+
+
+d1 $ stack [
+  sound "kk:3*2",
+  slow 2 $ zoom (0.5, 1) $ striate 16 $ sound "brandy:3",
+  sound "~"
+  ]
+
+d1 $ slow 4 $ zoom (0.5, 1) $ striate 8 $ sound "brandy:2"
+  |+| cut "1"
+
+ hush

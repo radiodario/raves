@@ -1,0 +1,29 @@
+-- another take let's do this
+
+d1 $ sound (samples "jv30strings*16" (run 32))
+
+d1 $ silence
+
+
+d1 $ stack [
+  --sound "[kk:3 ~ ~ ~ kk:3 ~ ~ ~ kk:3 ~ ~]*2",
+  --sound "cpp:2*4",
+  --sound "frontliner*4" |+| (slow 8 $ speed "1 0.9"),
+  --stut 4 0.5 0.25 $ sound "8CH*8",
+  --every 4 (stut 3 0.5 0.25) $ sound "8RS:1*8" |+| speed (scale 1 2.5 sine1),
+  --slow 4 $ striate 8 $ sound "bbs",
+  --slow 16 $ striate' 128 0.1 $ sound "rave:3",
+  --slow 4 $ striate 8 $ sound "amb:3",
+  --slow 4 $ sound "brandy:3",
+  --slow 16 $ striate' 64 (1/16) $ sound "tino" # speed "1" # gain "1", 
+  --sound (samples "[jv30pizzicato(3,8)]*2" (run 18)) # (slow 8 $ speed "0.75 0.9 1 1"),
+  --jux (rev) $ sound (samples "jv30ahs*8" (run 8)) # (slow 8 $ speed "1 0.75 0.9 1") |+| hresonance "0.1" |+| hcutoff "0.05",
+  sound "~"
+  ]
+
+-- sorry about that
+
+
+
+
+-- THANKS YOUS

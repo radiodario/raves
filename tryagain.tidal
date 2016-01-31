@@ -1,0 +1,24 @@
+
+
+d1 $ sound (samples "jv30strings*16" (run 32))
+
+d1 $ silence
+
+bps (160/120)
+
+d1 $ stack [
+  --sound "kk:7(3,8)",
+  --sound "[kk:3 ~ ~ ~ kk:3 ~ ~ ~ kk:3 ~ ~ ]*2",
+  sound "frontliner*4" # (slow 8 $ speed "1 0.9"),
+  sound "cpp:4*4",
+  --every 4 (density 2) $ stut 2 0.75 0.5 $ sound "8RS*8",
+  --sound "jvbass(3,8)" # (slow 8 $ speed "1 0.75 0.9 0.75"),
+  --slow 4 $ sound "amb:3",
+  --jux (rev) $ sound "jv30synstr2:4" |+| speed "0.75 0.75 0.9 1",
+  --sound "jv30tremolo:6*8" # (slow 8 $ speed "1 1 1 0.9"),
+  --sound (samples "jv30timpani*8" (run 12)) # speed "0.9",
+  --jux (iter 4) $ sound (samples "jv30pizzicato*8" (run 8)) # (slow 8 $ speed "1 0.75 0.9 1") |+| hcutoff "0.012" |+| hresonance "0.1",
+  --slow 4 $ sound "brandy:3",
+  slow 4 $ striate' 32 0.12 $ sound "rave:0" |+| speed "1",
+  sound "~"
+  ]

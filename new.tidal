@@ -1,0 +1,118 @@
+bps (160/120)
+
+d1 $ stack [
+  stut 3 0.5 0.25 $ sound "kk:4*2",
+  --sound "[~ cpp:3]*2",
+  --every 4 (stut 8 0.5 0.2) $ sound "[~ 8CH]*4",
+  --slow 8 $ striate 32 $ sound "bas:1" |+| cut "1",
+  --slow 4 $ striate 8 $ sound "brandy:1",
+  --stut' 2 0.5 (|/| speed "0.5") $ jux (iter 8) $ slow 4 $ striate 16 $ sound "gage",
+  sound "~"
+  ]
+
+
+  hush
+
+d1 $ stack [
+  --sound "kk ~ ~ ~ kk ~ ~ ~ kk ~ ~ kk ~ ~ ~ kk ~ ~ ~ kk ~ ~",
+  --sound "[kk ~ ~ ~ kk ~ ~ ~ kk ~ ~]*2",
+  --sound "kk:3 ~ ~ ~ kk:4 ~ ~ ~ kk:2 ~ ~ kk:3 ~ ~ ~ kk:3 ~ ~ ~ kk:2 ~ ~",
+  --sound "[kk:4*4, frontliner*4]" |+| speed "0.9",
+  --stut 4 0.75 0.25 $ sound "8RS*8" # speed (slow 32 $ scale 0.5 2 sine1),
+  --(stut 4 0.5 0.25) $ sound "8CH*4",
+  --sound "[~ cpp:1]*2",
+  --iter 4 $ slow 4 $ striate 4 $ sound "brandy:3",
+  --slow 4 $ striate 8 $ sound "bbs",
+  sound "~"
+  ]
+
+d2 silence
+
+d2 $ sound (samples "jv30strings*16" (run 32))
+
+d1 silence
+
+-- inb4 getting signed for erased tapes
+
+d1 $ stack [
+  stut 2 0.5 0.25 $ sound "kk:4*4",
+  (stut 4 0.75 0.5) $ sound "8CH*8",
+  (stut 2 0.5 0.5) $ jux (rev) $ sound (samples "jv30ohs*8" (run 16)) # (slow 8 $ speed "1 0.75 0.9 1"),
+  sound "~"
+  ] 
+
+
+hush
+
+d1 $ sound "can"
+
+-- arpe gia
+d1 $ stack[
+  --sound "kk:1*2",
+  --every 4 (stut 3 0.75 0.15) $ sound "cpp:2",
+  --every 4 (stut 4 0.75 0.25) $ sound "8RS*8" # speed (slow 4 $ scale 0.5 2 sine1),
+  (stut' 2 0.75 (|-| speed "0.25")) $ jux (rev) $ sound (samples "newnotes*0" (run 4)) # speed "0.5",
+  sound "~"
+  ]
+
+-- once more
+d1 $ stack [
+  --sound "kk:1*2",
+  --every 4 (stut 8 0.5 0.5) $ sound "cpp:2",
+  --sound (samples "jvbass*8" (run 2)),
+  --(stut' 2 0.1 (|+| speed "0.25")) $ jux (rev) $ sound (samples "steel(2,5)" (run 2)) # speed "0.75",
+  sound "~"
+  ]
+
+hush
+
+
+d3 $ stack [
+  --every 4 (stut 2 0.75 0.25) $ sound "kk:4*4",
+  --slow 8 $ sound "bbs:2",
+  --jux (iter 4) $ stut 4 0.75 0.5 $ slow 8 $ striate 8 $ sound "barp",
+  stut 2 0.75 0.25 $ jux (rev) $ slow 8 $ sound (samples "ocean*4" (run 16)) # gain (slow 4 $ scale 0.25 1 sine1),
+  --slow 8 $ striate 8 $ sound "amb:3" # cut "1",
+  --sound "[~ cpp:2]*2",
+  --slow 8 $ sound "belong:3",
+  --(stut 8 0.5 0.5) $ sound "8CH*4",
+  --sound "8RS*8" # speed (slow 4 $ scale 0.5 3 sine1),
+  stut' 2 0.5 (|-| speed "0.25") $ jux (rev) $ sound (samples "jvbass*8" (run 0)) # speed "1" # gain "1",
+  --slow 4 $ striate 4 $ sound "brandy:0",
+  sound "~"
+  ]
+
+hush
+
+
+-- better
+bps (120/120)
+
+d1 $ stack [
+  --sound "kk*4",
+  --every 4 (stut 2 0.75 0.25) $ sound "[~ cpp:2]*2",
+  --slow 16 $ sound (samples "pepsi*16" (run 16)),
+  --(stut 2 0.25 0.5) $ striate 8 $ sound "pepsi:3",
+  --sound "pepsi:2",
+  --slow 4 $ sound "pepsi:1 pepsi:2 pepsi:3 pepsi:4",
+  --slow 2 $ sound "pepsi:4 pepsi:5",
+  --stut' 2 0.25 (|*| speed "1") $ jux (rev) $ striate 8 $ sound "pepsi:1",
+  slow 4 $ sound "{pepsi:9 pepsi:10 pepsi:11}%4",
+  --sound "pepsi:8",
+  --stut 4 0.5 0.25 $ slow 2 $ striate 4 $ sound "pepsi:4",
+  sound "~"
+  ]
+
+hush
+
+-- lovetalk
+d1 $ stack [
+  --slow 2 $ sound "jam",
+  --slow 2 $ sound "jam:1",
+  --slow 4 $ sound "jam:2 jam:3",
+  --slow 4 $ sound "jam:4 jam:5",
+  sound "~"
+  ]
+
+hush
+  

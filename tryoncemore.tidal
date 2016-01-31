@@ -1,0 +1,40 @@
+-- hi there
+
+bps (160/60)
+
+
+
+d1 $ sound (samples "jv30strings*16" (run 32))
+
+d1 $ silence
+
+
+d1 $ stack [
+  --every 4 (stut 2 0.75 0.25) $ sound "kk:5(3,8)",
+  sound "frontliner*2" |+| (slow 8 $ speed "1 1"),
+  --sound "kk:12(3,8)",
+  --sound "{stabs:1 stabs:1 stabs:0}%4" |+| (slow 8 $ speed "1 0.75 0.9 1"),
+  --sound "stabs",
+  sound "acp" |+| gain "1.2",
+  --sound "8CH*8" |+| speed (slow 16 $ scale 0.5 2 sine1),
+  --every 4 (stut 2 0.75 0.25) $ sound "8RS*8",
+  --slow 2 $ sound "bbs",
+  --jux (rev) $ sound (samples "jv30timpani*4" (run 4)),
+  --jux (rev) $ sound (samples "jv30orchit*8" (run 4)) # (slow 8 $ speed "1 1 0.75 0.9") |+| hresonance (slow 16 $ scale 0.01 0.2 sine1) |+| hcutoff (slow 32 $ scale 0.05 0.2 sine1),
+  --slow 16 $ striate' 32 0.1 $ sound "ocean:4",
+  --slow 16 $ striate' 32 0.2 $ sound "rave:2",
+  --slow 4 $ sound "brandy:3",
+  sound "~"
+  ]
+
+
+d1 $ stack [
+  --sound "kk:4*2",
+  --jux (rev) $ stut' 2 0.25 (rev) $ sound "[jv30timpani:7(3,8), jv30timpani:3(3,8)]" |+| (slow 16 $ speed "1 0.9 0.75 1"),
+  --sound "ocean:4" # begin "0.75",
+  --(every 4 (# begin "0.5")) $ sound "ham:1" |+| cut "1",
+  --slow 4 $ striate' 64 0.25 $ sound "belong:0",
+  sound "~"
+  ]
+
+

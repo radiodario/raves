@@ -1,0 +1,15 @@
+
+
+cps (120/240)
+
+d1 $ stack [
+  sound "kk:4*4",
+  every 4 (density 2) $ sound "{stabs:1 stabs:1 stabs}%4" |+| (slow 4 $ speed "0.7 0.9 1"),
+  sound "~ acp",
+  every 4 (density 2) $ sound "8RS*8" |+| speed (slow 2 $ scale 0.5 2 sine1),
+  sound "~"
+  ]
+
+d1 $ sound "stabs:2"
+
+hush

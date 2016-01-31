@@ -1,0 +1,32 @@
+-- hi
+
+d1 $ sound "can"
+
+bps (160/120)
+
+d1 $ stack [
+  --every 4 (stut 2 0.75 0.25) $ sound "kk:4*2",
+  --sound "~ cpp:2",
+  --every 4 (stut 3 0.75 0.75) $ sound "8CH*4",
+  --stut' 2 0.75 ((|-| speed "0.25")) $ jux (rev) $ sound (samples "jvbass*8" (run 32)) # speed "1",
+  --slow 8 $ striate 128 $ sound "ocean:2" |+| cut "1" # speed "0.75",
+  --slow 2 $ striate 4 $ (zoom (0, 0.5) $ sound "fado"),
+  --stut' 2 0.75 (|-| speed "0.25") $ jux (rev) $ slow 16 $ striate 32 $ sound "amb" |+| gain "0.8",
+  --slow 8 $ sound "belong:4",
+  --sound "kk:5*4",
+  --sound "~ cpp:4",
+  --every 4 (stut 2 0.75 0.25) $ sound "8RS(3,8)",
+  --stut' 2 0.25 (|-| speed "0.5") $ jux (rev) $ sound (samples "newnotes*8" (run 16)) |+| speed "1",
+  --  sound "[kk:4 ~ ~ ~ kk:3 ~ ~ ~ kk:3 ~ ~]*2",
+--  stut 1 0.75 0.25 $ sound "cpp:2*2",
+--  sound "8CH*4",
+-- stut 2 0.75 0.25 $ sound "8RS*8" # speed (slow 16 $ scale 0.5 4 sine1),
+-- slow 8 $ striate 8 $ sound "bbs",
+-- slow 2 $ sound "brandy:3",
+  sound "~"
+ ]
+
+
+
+  
+hush

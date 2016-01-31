@@ -1,0 +1,40 @@
+-- hi!
+
+bps (160/60)
+
+
+d1 $ slow 2 $ sound (samples "jv30strings*16" (run 32))
+
+d1 $ sound "psx"
+
+
+d1 silence
+
+d1 $ stack [
+  --sound "kk:10*2",
+  --sound "{stabs:2 stabs:2 stabs:3}%4" # (slow 8 $ speed "1"),
+  --sound "frontliner*2" # (slow 16 $ speed "1 0.9"),
+  --slow 16 $ sound "rave:5",
+  --sound "8BD:6(3,8)",
+  --stut 2 0.75 0.75 $ sound "8RS*4",
+  --every 4 (density 2) $ sound "8CH*3",
+  sound "kk:4(3,8)",
+  --sound "{stabs:1 stabs:1 stabs}%4" # (slow 16 $ speed "1 0.9"),
+  --sound "kk:3*2",
+  --jux (rev) $ slow 2 $ sound "hammer:1" # bandf "0.7" # bandq "0.2",
+  --slow 4 $ sound "barp*4" # speed "0.75" # cut "1",
+  --every 4 (density 3) $ sound "~ acp:1",
+  --slow 2 $ sound "kk:3*4",
+  --slow 2 $ sound "iphone:2",
+  --jux (rev) $ slow 8 $ striate' 32 (1/16) $ sound "iphone:4*2" # gain "1.2",
+  --slow 8 $ sound "brandy:0" # end "0.5" # gain "1",
+  --slow 4 $ sound "bbs",
+  --every 4 (stut 2 0.75 0.25) $ sound "[~ acp:2]",
+  jux (rev) $ sound (samples "jv30timpani*8" (run 16))
+    # (slow 8 $ speed "1 0.9 0.75 1")
+    # speed "0"
+    # bandf (slow 16 $ scale 0.4 0.7 sine1)
+    # bandq (slow 8 $ scale 0.7 0.4 sine1)
+  ,
+  sound "~"
+  ]

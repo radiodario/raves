@@ -1,0 +1,32 @@
+-- 1 sec
+
+d1 $ sound (samples "jv30strings*16" (run 32))
+
+d1 $ silence
+
+
+
+
+
+
+-- MORE NIGHTCORE
+d1 $ stack [
+  --slow 16 $ sound "psx",
+  --stut' 2 0.75 (|+| speed "0.5") $ sound "kk:2*2",
+  --sound "hammer:4" |+| speed "0.9",
+  --sound "frontliner*2" # (slow 16 $ speed "1 0.9"), 
+  --sound "iphone:3",
+  --sound "acp",
+  --sound "[~ acp]",
+  --every 4 (density 2) $ slow 16 $ striate' 32 (1/16) $ sound "ocean",
+  --every 4 (stut 3 0.75 0.32) $ sound "8CH*8",
+  --stut 2 0.75 0.25 $ sound "8RS*8" |+| speed (slow 16 $ scale 0.5 2 sine1),
+  --slow 8 $ sound "rave:3",
+  --jux (rev) $ slow 4 $ sound "bbs",
+  --sound "{stab:1 stab:1 stab}%4" # (slow 16 $ speed "1 1 0.9 0.75"), 
+  --sound "jv30timpani:76*4",
+  --slow 2 $ sound "tino" # begin "0.7",
+  --slow 4 $ sound "brandy:3" |+| gain "1.2",
+  --sound (samples "jv30voice*8" (run 4)) # (slow 16 $ speed "1 0.9 0.75 1") # bandf "0.2" # bandq "0.7" # gain "0.95",
+  sound "~"
+  ]

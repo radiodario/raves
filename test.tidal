@@ -1,0 +1,10 @@
+-- d1 $ sound "kk(3,8)"
+
+d2 $ sound "cp*4"
+
+hush
+
+d1 $ note "e3 g4 a4 a4" # s "supercomparator" # speed (slow 16 $ "0.2 1") # resonance "0.8" # cutoff "1000"
+
+
+bps(160/60)

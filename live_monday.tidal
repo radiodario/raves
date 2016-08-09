@@ -28,7 +28,7 @@ d2 silence
 
 d1 silence
 
-cps (120/60) 
+cps (120/60)
 
 d3 $ stack [
  sound "bd:3 ~",
@@ -52,9 +52,9 @@ d1 $ slow 2
 
 d1 $ slow 8 $ stack [
   every 4 (|+| speed "1 1.2") $ sound "steel steel*2" |+| cut "0" |+| speed "1"
- ,sound (samples "8RS*4 8RS ~ ~ 8RS ~ ~ 8HC " (run 4)) |+| gain "0.14"
+ ,sound (samples "8rs*4 8rs ~ ~ 8rs ~ ~ 8hc" (run 4)) |+| gain "0.14"
   ]
- |+| gain "0.81"
+  |+| gain "0.81"
   |+| delay "0.9"
   |+| delayfeedback (slow 128 ((/2) <$> sine1))
   |+| delaytime "10"
@@ -124,16 +124,16 @@ d1 $ every 2 (|+| cut "1")
 
 d1 $ slow 4 $ sound "hh ~ ~ hh ~ ~ hh hh ~ ~ hh ~ hh ~ ~ hh"
   |+| gain "0.3"
-  
+
 d2 $ slow 4 $ stack [
  -- every 4 (|+| cut "1") $ every 4 (0.25 <~) $ sound "east:2 [east:4 east] ~ ~ [east]*3 ~ ~ east:3" |+| gain "0.75"
 -- slow 4 $ sound "blade:2" |+| speed "0.5"
--- slow 8 $ sound "ocean ocean:2 [~ ocean] ~" |+| speed "0.1" |+| gain "0.75" 
+-- slow 8 $ sound "ocean ocean:2 [~ ocean] ~" |+| speed "0.1" |+| gain "0.75"
 -- slow 2 $ sound "bd ~ ~ bd:2 ~ ~ bd:3 bd ~ ~ bd ~ bd ~ ~ bd"
 -- ,slow 2 $ sound "~ hh*2 hh ~ ~ hh ~ ~ hh hh ~ hh ~ hh hh ~"
  --slow 4 $ every 4 (|+| cut "1") $ sound "fado " |+| gain "0.2" |+| cut "1",
   slow 4 $ sound "jv30orchit*2" |+| gain "0.25"
-  
+
   --,slow 4 $ sound "organ2 ~ ~ ~ organ2 organ2 ~ organ2" |+| gain "0.34" |+| cut "0"
  ]
   |+| gain "0.45"
@@ -172,7 +172,7 @@ d1 $ slow 4 $ stack [
   ]
   |+| gain "0.35"
   |+| resonance (slow 32 ((/2) <$> sine1))
- 
+
 
 
 d1 $ slow 4
@@ -192,7 +192,7 @@ hush
 d3 $ silence
 
 d3 $ slow 4 $ striate 32 $ sound "~ pepsi ~ [pepsi:2 ~]"
-  |+| cut "1" 
+  |+| cut "1"
   |+| gain "0.5"
 
 d1 $ every 4 (rev) $ sound "[bd, hh hh hh [hh hh]*3, cp/2]"
@@ -217,7 +217,7 @@ d1 $ slow 4
    ,sound "jam:1" |+| gain "0.4" |+| cut "1"
    ]
   |+| gain "0.65"
-    
+
 d2 $ slow 4 $ sound "sub:3 steel/2"
   |+| gain "0.8"
 

@@ -1,0 +1,186 @@
+-- This set won't be livecoded
+-- Die LazerWurst
+-- La Salchicha Láser
+
+bps (160/60)
+
+-- vaporave
+d1 $ stack [
+--  jux (rev) $ slow 16 $ n "[g2 f3 c2 d2]*8 [f2 g3 d2 a2]*8" # s "supercomparator" # voice (slow 16 $ scale 1 4 $ sine1),
+-- n "g3 f3 c3 d3" # s "superchip" # voice (slow 16 $ scale 1 4 $ sine1),
+-- jux (iter 4) $ n "{f5 g5 c5 f5 f5 f5 g5 c5 f5}%4" # s "supercomparator" # voice (slow 32 $ scale 1 4 $sine1) # gain (slow 32 $ saw),
+-- jux (iter 4) $ n "{f5 g5 g5 d5 d5 d5 g5 c5 f5}%4" # s "supercomparator" # voice (slow 32 $ scale 1 4 $sine1) # gain (slow 32 $ saw),
+-- slow 16 $ n "[g3 g5]*4 [f3 f5]*4 [c3 c5]*4 [d3 d5]*4" # s "superchip" # voice "0.1" # gain "0.85", -- # slide "5",
+--n "f3 d5" # s "superchip" # voice "0.2",-- # accelerate "0.1",
+ sometimes (stut 4 0.5 0.25) $ slow 2 $ sound "kk:5 80sd:12",
+-- sometimes (stut 4 0.5 0.2) $ slow 2 $ sound "~ 80sd:12",
+-- sometimes (stut 4 0.5 0.25) $ slow 2 $ sound "kk:5 ~",
+-- slow 32 $ sound "[belong belong:1/2]",
+-- slow 32 $ sound "[belong:2 belong:3/2]",
+ sound "~"
+]
+
+
+
+-- cantata for playstations
+d1 $ slow 16 $ sound "psx" # cut "1"
+
+hush
+
+d1 $ stack
+  [
+  -- uncomment the first two mane
+--  sound "psx" # begin "0.05" # end "0.1" # cut "1",
+--  sound "psx" # begin "0.09" # end "0.15" # cut "2",
+--  sound "psx" # begin "0.15" # end "0.2" # cut "3",
+--  sound "psx" # begin "0.2" # end "0.25" # cut "4",
+--  sound "psx" # begin "0.25" # end "0.3" # cut "5",
+--  sound "psx" # begin "0.3" # end "0.35" # cut "6" # speed (slow 32 $ "1 0.75"),
+--  sound "psx" # begin "0.05" # end (slow 64 $ scale 0.1 0.2 $ sine1) # cut "3",
+--  sound "psx" # begin (slow 64 $ scale 0.2 0.3 $ sine1) # end (slow 64 $ scale 0.3 0.4 $ sine1) # cut "2",
+--  sound "psx" # begin (slow 64 $ scale 0.0 0.9 $ sine1) # end (slow 64 $ scale 0.1 1 $ sine1) # cut "1",
+--  sound "psx" # begin (slow 64 $ scale 0.8 0.9 $ sine1) # cut "4",
+--  striate 4 $ slow 32 $ sound "amb:0*4" # cut "5",
+--  iter 4 $ n "{g3 f3 c3 g3 d3 f3}%4" # s "superhex",
+--  sometimes (stut 4 0.5 0.2) $ slow 2 $ sound "~ 80sd:12",
+--  jux (rev) $ sometimes (density 2) $ sound (samples "80sd*2" (iter 3 $ run 10)) # gain "0.9",
+--  jux (rev) $ sometimes (density 2) $ sound (samples "kk*4" (iter 4 $ run 12)) # gain "0.9",
+--   sound "kk:5",
+--  sometimes (density 4) $ sound "can",
+--  sound (samples "noise*4" (iter 4 $ run 12)),
+    sound "~"
+  ]
+
+d2 $ silence
+
+-- Dom Tom
+d1 $ stack [
+--  striate 4 $ slow 32 $ sound "chor*8" # cut "1",
+  striate 4 $ sound (samples "brandy" (iter 4 $ run 12)) # cut "2",
+--  jux (rev) $ n "g3 f4 g2 c3" # s "supercomparator" # sustain "0.2",
+--  sound (samples "~ hc*2" (iter 4 $ run 12)),
+--  density 4 $ sound "acp:1/2",
+--  sound "frontliner*2",
+--  sound "8rs*8" # speed (slow 32 $ scale 1 1.5 $ sine),
+--  sound (samples "~ ht*2 mt lt*2" (iter 3 $ run 4)),
+--  sound (samples "kk(3,8)" (run 3)),
+--  sound "kk:11*2",
+  sound "~"
+]
+
+
+t1 anticipate $ sound (samples "kk*8" (iter 4 $ run 8))
+
+--t1 anticipate
+d1
+$ stack [
+--  sound (samples "kk*8" (iter 4 $ run 8)),
+--  sound (samples "kk(3,8)" (run 3)),
+--  sound (samples "mgs" (iter 3 $ run 12)) # cut "1", -- change to iter 4 for "that bass"
+--  density 2 $ sound "acp",
+--  sound (samples "hc*8" (iter 3 $ run 2)),
+--  n "{g3 d3 c3}%4" # s "supercomparator" # sustain "0.2" # release "0.2",
+--  slow 2 $ n "{g5 c4 f3 d3 c4}%4" # s "superhex" # voice "0.01" # accelerate (slow 24 $ sine1),
+--  n "{c3 c3 f3}%4" # s "superchip",
+  sound "~"
+]
+
+d2 silence
+
+-- It's nothing against you
+d1 $ stack [
+  --slow 2 $ sound "kk ~ ~ kk ~ ~ kk ~ kk ~ ~ kk ~ ~ kk ~",
+--  sound "~ ~ cpp ~",
+--  slow 2 $ sound "[kk ~ ~ kk ~ ~ kk ~]*2",
+--  density 2 $ slow 2 $ sound "kk:4(3,8)",
+--  slow 2 $ sound "kk:2 ~ ~ kk:2 ~ ~ kk:2 ~ ~ ~ kk:2 ~ ~ kk:2 ~ ~",
+--  sound "kk:12*2",
+--  sound "frontliner*2" # speed (slow 32 $ "1 0.85"),
+--  every 4 (stut 4 0.75 0.5) $ sound "[~ ~ acp:2 ~]",
+  density 2 $ (stut 3 0.75 0.5) $ sound "[cpp:2 ~]*2",
+--  density 32 $ slow 32 $ sound (samples "rave" (iter 3 $ run 3)) # cut "12",
+  jux (iter 4) $ sound "iphone:2",
+--  jux (iter 4) $ striate 32 $ sound "~ iphone:4",
+  every 4 (density 2) $ sound "8ch:2*4",
+  every 8 (density 2.5) $ sound "8oh*4",
+  jux (iter 4) $ sound "8ht(6,8)" |+| speed (slow 64 ((*2) <$> sine1)),
+  sound "8lt(3,8)",
+ sound "8rs*8" |+| speed (slow 24 ((*2) <$> sine1)),
+-- sometimes (density 4) $ slow 4 $ n "g3 g3 f3 a3" # s "superhex",
+  sound "~"
+]
+
+
+
+-- uncomment me
+d1 $ stack [
+--  stut 2 0.75 0.25 $ sound "kk:11(3,8)",
+--  every 2 (density 2) $ sound "8cl*8" # speed (slow 16 $ scale 0.5 2 sine1),
+--  jux (iter) $ sound (samples "newnotes*8" (run 32)),
+  --sound "iphone:2",
+--  slow 4 $ sound "[acp:1]*2",
+--  sometimes (density 4) $ slow 32 $ sound "[~ kk:11 kk:3 ~]*16",
+--  jux (rev) $ sound (samples "jv30timpani*3" (run 3)),
+--  sometimes (density 2) $ sound "[~ 8ch]*3",
+--  sound "jv30voice:2/2" # speed (slow 8 $ "1 0.9"),
+--  slow 2 $ sound "[jv30ohs:3, ~ jv30ahs:3]" # (slow 16 $ speed "1 0.9"),
+--  slow 2 $ sound "bbs" # cut "2",
+  sound "~"
+  ]
+
+--
+d1 $ stack [
+  --slow 2 $ sound "[kk ~ ~ kk ~ kk ~ ~]",
+  --sound "8ch(3,8)" # cut "1",
+  sound "[~ ~ 8oh ~]" # cut "1",
+  every 4 (stut 2 0.75 0.25) $ sound "8ch:4*4",
+  sound "[~ 80sd:12]/2",
+  sometimes (density 2) $ sound "[~ 8rs]*2",
+  sound "[~ acp]",
+  --slow 32 $ striate 32 $ sound "" # gain "0.8",
+  sound "~"
+  ]
+
+
+t1 anticipate $ stack [
+  sound "kk:4(3,8)",
+--  sound "frontliner*2",
+--  sound "acp:1",
+--  stut 2 0.75 0.25 $ sound "[~ acp:0]",
+--  sound "8rs*8" # speed (slow 4 $ scale 0.15 2 sine1),
+--  striate 8 $ sound "bbs",
+--  jux (rev) $ sound (samples "jv30timpani*4"  # run 3)
+--  jux (rev) $ sound (samples "jv30ahs*8" (run 16)) # (slow 16 $ speed "1 0.75 0.9 1") |+| hresonance "0.1" |+| hcutoff "0.2",
+  --slow 4 $ striate' 16 0.25 $ sound "rave:0",
+--  slow 4 $ sound "brandy:1",
+  sound "~"
+  ]
+
+
+-- change the bpm for this one
+bps (108/60)
+
+d1 $ stack [
+--  slow 8 $ sound "lovetalk:0" # cut "1",
+--  slow 8 $ striate 8 $ rev $ sound "lovetalk:3*2" # cut "1",
+-- iter 2 $ slow 8 $ striate 8 $ rev $ sound "lovetalk:2*2" # cut "1",
+  sound "kk*2",
+  sound "~ acp",
+  sound "~"
+]
+
+
+hush
+
+bps (160/60)
+
+-- pop culture
+d1 $ jux (iter 4) $ sound "iphone(3,2)" # speed (slow 8 $ iter 4 $ "0.75 1 0.9 1")
+
+-- let this one run for a bit
+d1 $ striate 32 $ slow 32 $ sound "chor"
+ |+| cut "1"
+
+d2 $ slow 2 $ sound (samples "[~ agogo]*8" (iter 2 $ run 6))
+
+hush

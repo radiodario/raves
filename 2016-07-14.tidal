@@ -1,0 +1,109 @@
+d2 $ stack [
+  sound "bd [bd bd]",
+  sound "sn",
+  every 4 (slow 0.5) $ sound "hh*4",
+  sound "~"
+]
+
+d1 $ n "c4" # s "acid"
+
+d2 $ slow 2 $ n "[c3 43 g4 c5 c3 c2 ~]" # s "superpiano"
+
+d4 $ n "{d2 g2 c2}%4" # s "supercomparator"
+  # speed "8"
+
+hush
+
+d3 $ n "{d4 g3 c4}%4" # s "supercomparator"
+  # speed "8"
+--  # attack "0"
+--  # decay (slow 128 $ scale 0.25 1 $ sine1)
+--  # sustain (slow 128 $ scale 1 0.25 $ sine1)
+--  # release (slow 64 $ scale 0.5 1 $ saw1)
+
+d2 $ slow 2 $ n "[g2 d2]" # s "supercomparator"
+  # sustain "1"
+  # voice "1.5"
+
+d1 $ slow 1 $ n "[c2 d4 a3 ~]([5 3],8)" # s "superhex"
+  # decay (slow 128 $ scale 0.25 1 $ sine1)
+  # sustain (slow 128 $ scale 1 0.25 $ sine1)
+  # release (slow 64 $ scale 0.5 1 $ saw1)
+
+d2 $ slow 2 $ every 8 (density 4) $ sound "kk:4"
+
+d2 $ silence
+
+d3 $ slow 2 $ sound "[~ acp]/2"
+
+d4 $ slow 2 $ stack [
+  n "[g3 d3 c3 [d3 c3]]" # s "supercomparator",
+--  n "{c4 d3 g3}%4" # s "superchip" # voice "0.2",
+  --sound "ocean*4 ocean:1*2" # end "0.25" # cut "1",
+--  density 4 $ sound "kk:4",
+  sometimes (slow 4) $ density 2 $ sound "8ch*8",
+  --sound "[kk:3*2]*2",
+  sometimes (slow 4) $ density 1 $ sound "8rs*16", -- # (slow 4 $ speed "1.25 1 0.75 1"),
+  sound "[~ cp]*2",
+  sound "~"
+]
+
+hush
+
+cps $ (80/60)
+
+d1 $ slow 4 $ zoom (0.1, 0.25) $ sound "psx*4" # cut "1"
+
+d1 $ slow 8 $ sound "psx"
+
+
+-- cantata for playstations
+d1 $ stack
+  [
+--    sound "psx" # end   (slow 64 $ scale 0.1 0.2 $ sine1),
+--  sound "psx" # begin (slow 64 $ scale 0.2 0.3 $ sine1) # end (slow 64 $ scale 0.3 0.4 $ sine1),
+    sound "psx" # begin (slow 64 $ scale 0.0 0.9 $ sine1) # end (slow 64 $ scale 0.1 1 $ sine1),
+--    sound "psx" # begin (slow 64 $ scale 0.8 0.9 $ sine1),
+    sound "~"
+  ]
+
+
+d2 $ stack [
+  --n "g2" # s "supercomparator" # voice "2" # resonance "0.2",
+  -- every 8 (density 2) $ n "g2" # s "super808",
+  --slow 2 $ sound "kk:7(3, 8)",
+  sound "~"
+]
+
+d1 $ stack [
+sound "kk:4(3, 8)",
+sound "[8ch 8ch]*4",
+sound "[8rs*4, 8rs ~ ~ ~]",
+sound "acp*2" # gain "0.7",
+--slow 2 $ n "[g2 c3 d2 c3]" # s "supercomparator" # sustain "1" # voice "1",
+sound "~"
+]
+
+
+d1 $ silence
+d1 $ sound "bd [sn:2*2] bd [sn]"
+
+d2 $ stack [
+  slow 2 $ sound "bd ~ ~ bd ~ ~ bd ~ bd ~ ~ bd ~ ~ bd ~",
+  sound "~"
+]
+
+
+
+hush
+
+d1 $ slow 2 $ sound "[bd cp [~ bd] cp]"
+
+d1 $ sound "[bd/2 cp, ~ ~ [~ cp/2]]"
+
+
+d1 $ stack [
+  sound "bd ~ ~  ~  bd ~ ~  ~",
+  sound "[~ ~ ~ ~ cp ~ ~ [cp] ~ ~ ~ ~ cp ~ ~ ~ ]/2",
+  sound "~"
+]

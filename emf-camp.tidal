@@ -1,0 +1,67 @@
+d1 $ loopAt 24 $ chop 4 $ sound "fado" # cut "1" # gain "2"
+
+d1 $ silence
+
+d2 $ silence
+
+d2 $ loopAt 32 $ chop 32 $ sound "amb:1" # gain (slow 32 $ scale 0.5 2 $ sine1)
+
+d3 $ fadeIn 8 $ note "c4(3,8) f4(5,8) g5(3,8) d3(7,8)" # s "superchip"
+
+d3 $ silence
+
+d1 $ loopAt 24 $ sound "psx" # gain "4"
+
+d3 $ loopAt 1 $ sound (samples "kk(3,3) kk(5,7) kk(3,8) kk(3,3)" (run 32))
+
+d4 $ sound (samples "kk(3,3) kk(5,7) kk(3,8) kk(3,3)" (run 32))
+
+d4 $ slow 4 $ note "e3(3,8) f3(5,8) g2(3,8) d4(7,8)" # s "supercomparator"
+
+d4 $ silence
+
+d3 $ silence
+
+d1 $ silence
+
+bps(160/60)
+
+d2 $ stack [
+--  loopAt 2 $ sound "mgs:3",
+--  sound (samples "kk(5,8)" (run 12)),
+--   sound "kk:4*2",
+--    sound "kk:8(3,7)",
+--  loopAt 1 $ sound "frontliner*2" # (slow 32 $ speed "1 0.85"),
+--    sound "kk:9*2 ~ kk:9 ~",
+    sound "~ ~ ~ 8ch:5",
+--  sound "[acp:1 ~]",
+--  jux (iter 2) $ loopAt 1 $ sound (samples "[8hc/4 ~ 8lc/4]*32" (run 32)) # cutoff "1000" # orbit "1",
+--   loopAt 2 $ sound (samples "8oh*4 8ch*8" (run 32)) # orbit "0.1" # room "2",
+--  loopAt 2 $ sound (samples "8cb*4 dr55*8" (run 32)),
+--  loopAt 2 $ sound (samples "metal*4" (run 32)),
+  loopAt 8 $ sound "bottle*32" # cutoff "6000",
+-- jux (rev) $ loopAt 18 $ sound (samples "8cy*32" (run 32)),
+-- loopAt 32 $ sound "voodoo",
+--  jux (rev) $ loopAt 3 $ sound (samples "lighter*32" (run 32)) # resonance "0.2" # cutoff "7000",
+ loopAt 32 $ striate 32 $ sound (samples "fado*64" (run 32)),
+--    loopAt 8 $ sound (samples "hand*32" (run 32)) # gain "1.5",
+    sound "hand" ,
+--   jux (rev) $ loopAt 8 $ sound (samples "ham*4" (run 3)),
+ loopAt 4 $ sound (samples "birds3*32" (run 32)) # cutoff "5000" # resonance "0.10" # speed (slow 16 $ "0.8 1"),
+--  loopAt 32 $ sound (samples "gretsch*32" (run 32)),
+--   jux (iter 4) $ loopAt 16 $ sound (samples "brandy*4" (run 2)),
+--   loopAt 32 $ striate 32 $ rev $ sound "psx*64",
+--    loopAt 8 $ jux ((<~) 0.75) $  sound (samples "barp*8" (run 32)) # speed (slow 64 $ scale 0.8 1.2 $ sine1),
+--  jux (iter 4) $ loopAt 4 $ sound (samples "[mallet/4 birds3/8 barp/16]*32" (run 32)),
+--  slow 8 $ loopAt 2 $ sound (samples "ocean*4" (run 32)) # gain "4",
+--  slow 8 $ loopAt 2 $ sound (samples "beach*4" (run 32)) # gain "4",
+--  slow 8 $ sound (samples "msg*32" (run 32)) # gain "2",
+  sound "~"
+]
+
+bps(130/60)
+
+
+d2 $ silence
+
+d1 $ silence

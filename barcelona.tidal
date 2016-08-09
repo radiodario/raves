@@ -3,15 +3,15 @@ bps (80/60)
 
 
 d1 $ stack [
-  --stut 2 0.75 0.25 $ sound "frontliner(3,8)",
-  --every 2 (density 2) $ sound "8CL*8" # speed (slow 16 $ scale 0.5 2 sine1),
-  --sound (samples "newnotes*8" (run 32)),
+--  stut 2 0.75 0.25 $ sound "kk:3(3,8)",
+  every 2 (density 2) $ sound "8cl*8" # speed (slow 16 $ scale 0.5 2 sine1),
+  sound (samples "newnotes*8" (run 32)),
   --sound "iphone:2",
-  --sound "[acp:1]*2",
+  sound "[acp:1]*2",
   --sound "jv30timpani:4*3",
   --sound "[~ 8CH]*4",
-  --sound "jv30voice:2",
-  --sound "[jv30ohs:3, jv30ahs:3]" # (slow 16 $ speed "1 0.9"), 
+  sound "jv30voice:2",
+  --sound "[jv30ohs:3, jv30ahs:3]" # (slow 16 $ speed "1 0.9"),
   --slow 2 $ sound "bbs",
   sound "~"
   ]
@@ -21,13 +21,13 @@ d1 $ stack [
 
 bps (80/60)
 
-d2 $ stack [
+t1 anticipate $ stack [
   slow 2 $ sound "[kk ~ ~ kk ~ kk ~ ~]",
-  --sound "8CH(3,8)" # cut "1",
-  sound "[~ ~ 8OH ~]" # cut "1",
-  every 4 (stut 2 0.75 0.25) $ sound "8CH:4*4",
+  --sound "8ch(3,8)" # cut "1",
+  sound "[~ ~ 8oh ~]" # cut "1",
+  every 4 (stut 2 0.75 0.25) $ sound "8ch:4*4",
   sound "[~ sn:3]/2",
-  sometimes (density 2) $ sound "[~ 8RS]*2",
+  sometimes (density 2) $ sound "[~ 8rs]*2",
   --sound "[~ acp]",
   --slow 32 $ striate 32 $ sound "" # gain "0.8",
   sound "~"
@@ -62,7 +62,7 @@ hush
 d1 $ stack [
   slow 4 $ striate 32 $ sound "amb:2" # gain "0.8",
   sound "~"
-] # (slow 16 $ shape "0.2") 
+] # (slow 16 $ shape "0.2")
 
 
 hush

@@ -1,0 +1,15 @@
+hush
+
+--d1 $ loopAt 32 $ sound "fado" # gain "5" # speed "1"
+
+d1 $ silence
+
+
+d2 $ stack [
+--  sound "8bd*4 8cp:4",
+ -- sound "8rs*8" # speed (slow 4 $ sine1),
+--  loopAt 16 $ sound "lovetalk:2",
+  sound "~"
+]
+
+

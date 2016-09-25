@@ -1,0 +1,11 @@
+d1 $ stack [
+  loopAt 32 $ sound "psx",
+  slow 16 $ note "g3(3,8) f3(5,3) f5 c5" # s "supercomparator",
+--  sound "kk:4(5,8)",
+  sound "8rs*2",
+  sound "8ch*4",
+  sound "kk:3",
+  sound "~"
+]
+
+d1 $ sound "bd"
